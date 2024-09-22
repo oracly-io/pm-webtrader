@@ -1,0 +1,112 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: 92px;
+  padding: 16px;
+  background: var(--roundprizefundsbar-bg);
+  border-radius: 24px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 23px;
+  leading-trim: both;
+  text-edge: cap;
+}
+
+.prizefund {
+  display: flex;
+  align-items: center;
+  color: var(--predictionlistwidget-prediction-prize-payment-color);
+  font-size: 18px;
+  line-height: 18px;
+  opacity: 1;
+  transition: opacity .1s ease-in-out, font-size .1s ease-in-out;
+
+  .total {
+    padding-right: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  .level {
+    svg path {
+      fill: var(--roundprizefundsbar-bg);
+    }
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+    font-size: 10px;
+  }
+}
+
+.lines {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.funds {
+  display: flex;
+  width: 100%;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.fundsdown {
+  display: flex;
+  justify-content: flex-end;
+  transition: width .3s ease-in-out;
+  color: var(--roundprizefundsbar-percent-down-color);
+}
+
+.fundszero {
+  display: flex;
+  justify-content: center;
+  transition: width .3s ease-in-out;
+  color: var(--roundprizefundsbar-percent-zero-color);
+}
+
+.fundsup {
+  display: flex;
+  justify-content: flex-start;
+  transition: width .3s ease-in-out;
+  color: var(--roundprizefundsbar-percent-up-color);
+}
+
+.down,
+.up,
+.zero {
+  height: 3px;
+  border-radius: 7px;
+  transition: width .3s ease-in-out;
+
+  & ~ & {
+    margin-left: 1px;
+  }
+}
+
+.down {
+  background: var(--round-funds-down-percent);
+}
+
+.up {
+  background: var(--round-funds-up-percent);
+}
+
+.zero {
+  background: var(--round-funds-zero-percent);
+}

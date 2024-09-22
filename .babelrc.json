@@ -1,0 +1,13 @@
+{
+  "presets": ["@babel/env", "@babel/react"],
+  "plugins": [
+    "@babel/syntax-jsx",
+    "@babel/transform-react-display-name",
+    "@babel/transform-react-jsx",
+    "@babel/transform-runtime",
+    "transform-export-extensions",
+    "add-module-exports",
+    "lodash"
+  ],
+  "comments": false
+}

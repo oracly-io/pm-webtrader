@@ -1,0 +1,50 @@
+.roundinfo {
+  padding: 24px 16px 16px 16px;
+  padding-top: env(safe-area-inset-top);
+}
+
+.prizefunds {
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.level {
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.roundTitle {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 0.75;
+}
+
+.right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  background: var(--website-bg);  
+}
+
+.rounddata {
+  margin-top: 5px;
+}
+
+.close {
+  border-radius: 16px;
+  border: 1px solid var(--gamelist-close-border-color);
+  transition: background-color .1s linear, border-color .1s linear;
+  margin-left: 10px;
+
+  &:active {
+    background: var(--gamelist-close-bg-active);
+  }
+
+  svg {
+    width: 13px;
+    height: 13px;
+  }
+}

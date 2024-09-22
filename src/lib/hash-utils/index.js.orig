@@ -1,0 +1,75 @@
+import { utils } from 'ethers'
+
+import { BETTOR_ICON_COLORS } from '@constants/bettorIcons'
+
+import logger from '@lib/logger'
+
+export function keccak256(values, types) {
+
+  try {
+    return utils.keccak256(
+      utils.defaultAbiCoder.encode(
+        types,
+        values
+      )
+    )
+  } catch (ex) {
+    logger.error(ex)
+    return null
+  }
+
+}
+
+<<<<<<< HEAD
+function reapeat(pattern, times) {
+  const result = []
+  let idx = 0
+  while (idx++ < times) {
+    result.push(pattern)
+  }
+  return result.join('')
+}
+
+export function hexHash(any, length = 8) {
+  try {
+    const str = JSON.stringify(any)
+    const numhash = numericHash(str)
+    const len = Number(reapeat('9', length))
+    const shorthash = numhash % len
+    const hexhash = shorthash.toString(16)
+    return hexhash
+  } catch (e) {
+    logger.warn('Cannot hash', any)
+    logger.warn('Because', e)
+  }
+}
+
+function numericHash(s) {
+=======
+export function subgraphKeccak256(value) {
+
+  try {
+    return utils.keccak256(utils.toUtf8Bytes(value))
+  } catch (ex) {
+    logger.error(ex)
+    return null
+  }
+
+}
+
+function humericHash(s) {
+>>>>>>> chat
+  let h = 0
+  if (!s || !s.length) return h
+
+  for (let i = 0; i < s.length; i++)
+    h = Math.imul(31, h) + s.charCodeAt(i) | 0
+
+  return Math.abs(h)
+}
+
+export function colorHash(name) {
+  const hash = numericHash(name)
+  const colorId = hash % BETTOR_ICON_COLORS.length
+  return BETTOR_ICON_COLORS[colorId]
+}

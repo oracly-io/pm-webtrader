@@ -1,0 +1,136 @@
+.container {
+  user-select: none;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px;
+  column-gap: 24px;
+}
+
+.event {
+  display: flex;
+  align-items: center;
+}
+
+.flags {
+  align-self: center;
+  display: flex;
+  margin-right: 12px;
+
+  &>svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  height: 34px;
+  justify-content: space-between;
+}
+
+.subtitle {
+  color: var(--predictionlistwidget-prediction-subtitle-color);
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 0.75;
+}
+
+.name {
+  color: var(--predictionlistwidget-prediction-name-color);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 0.75;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.countdown {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+  color: var(--predictionlistwidget-prediction-tillpayout-color);
+  font-size: 16px;
+  line-height: 20px;
+  text-align: right;
+  text-wrap: balance;
+}
+
+.countdown {
+  display: flex;
+  align-items: flex-end;
+
+  span {
+    display: flex;
+    margin-right: 8px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+.pricefeed {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: color .1s linear;
+
+  &:hover {
+    color: var(--roundinfo-transaction-icon-color-hover);
+  }
+}
+
+.icon {
+  display: flex;
+
+  &:hover {
+    svg path {
+      fill: var(--roundinfo-transaction-icon-color-hover);
+    }
+  }
+
+  svg path {
+    transition: fill .1s linear;
+    fill: var(--roundinfo-transaction-icon-color);
+  }
+}
+
+.pietimer {
+  display: flex;
+  align-items: center;
+}
+
+.tillpayoutprogress circle {
+  stroke-width: 3;
+  stroke: var(--betbar-tillpayoutprogress-border-color);
+}
+
+.timeprogress circle {
+  stroke-width: 3;
+  stroke: var(--gamepinbar-tile-timeprogress-border-color);
+}
+
+.level svg path {
+  fill: var(--gamepinbar-tile-currency-level-fill);
+}

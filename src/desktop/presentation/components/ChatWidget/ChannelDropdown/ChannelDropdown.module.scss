@@ -1,0 +1,33 @@
+.optionRenderer {
+  display: flex;
+  column-gap: 10px;
+}
+
+.optionLabel {
+  color: #FFFFFF;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.icon {
+  margin-left: 10px;
+}
+
+.header {
+  padding: 8px;
+  padding-right: 16px;
+  border: 1px solid rgba(30, 55, 121, 0.5);
+}
+
+.body {
+  z-index: 2;
+  border-radius: 22px;
+  padding: 2px;
+  border: 1px solid rgba(30, 55, 121, 0.5);
+}
+
+.option {
+  height: auto;
+}

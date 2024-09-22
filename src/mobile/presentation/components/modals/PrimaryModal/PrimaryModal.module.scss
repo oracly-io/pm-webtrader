@@ -1,0 +1,73 @@
+.base {
+  max-height: 100vh;
+  position: absolute;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  overflow: auto;
+  padding: 8px;
+  transform: translate(-50%, -50%);
+  transition: opacity 300ms ease-in-out;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  color: #fff;
+  opacity: 0;
+}
+
+.overlayBase {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(28, 37, 34, 0.9);
+  opacity: 0;
+  z-index: 9999;
+}
+
+.afterOpen {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.beforeClose {
+  opacity: 0;
+}
+
+.afterOpenOverlay {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.beforeCloseOverlay {
+  opacity: 0;
+}
+
+.close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 40px;
+  height: 40px;
+  transition: transform .5s cubic-bezier(.36,.66,.04,1);
+
+  svg {
+    transform: scale(1.2);
+
+    path {
+      fill: #67707B;
+      width: 100;
+      height: 100;
+    }
+  }
+
+  &:hover {
+    transform: rotate(-90deg);
+
+    svg path {
+      fill: #fff;
+    }
+  }
+}

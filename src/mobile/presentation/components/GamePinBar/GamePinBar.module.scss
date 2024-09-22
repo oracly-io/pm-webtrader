@@ -1,0 +1,88 @@
+.gamepinbar {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+  user-select: none;
+}
+
+.add {
+  height: 48px;
+  width: auto;
+  border-radius: 100px;
+  padding: 17px;
+  transition: background-color .1s ease-in-out;
+  background: var(--gamepinbar-add-bg);
+  gap: 16px;
+
+  span {
+    font-family: Gilroy;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19.09px;
+    text-align: center;
+    color: var(--gamepinbar-add-text);
+    margin-left: 5px;
+  }
+
+  svg {
+    transition: transform .1s ease-in-out;
+  }
+
+  &.active {
+    width: 48px;
+    background: var(--gamepinbar-add-bg);
+
+    svg {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.inner {
+  overflow: hidden;
+  position: relative;
+  flex: 1;
+
+  .games {
+    display: flex;
+    align-items: center;
+    margin-right: 6px;
+    transition: transform .15s cubic-bezier(0.05, 0, 0, 1);
+  }
+
+  .games::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .container {
+    border-spacing: 10px;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 16px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  height: calc(100% + env(safe-area-inset-top));
+  transition: all 0.5s ease-in;
+  display: flex;
+  flex-direction: column;
+
+  .closearea {
+    flex: 1;
+  }
+}
+
+.opened {
+  transform: translateY(calc(-100% + env(safe-area-inset-top)));
+}

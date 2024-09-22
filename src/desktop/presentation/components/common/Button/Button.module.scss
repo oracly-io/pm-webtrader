@@ -1,0 +1,79 @@
+.button {
+  display: flex;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  color: inherit;
+  position: relative;
+
+  &[href] {
+    text-decoration: unset;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  svg {
+    display: block;
+  }
+
+  .hovercircle {
+    position: absolute;
+    width: 20px; /* Circle size */
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3); /* Slightly transparent white */
+    box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.3);
+    pointer-events: none; /* Allows click events to pass through */
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity 1s, transform 0.5s;
+    opacity: 0;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 2px;
+    right: 2px;
+    background-color: inherit;
+    border-radius: inherit;
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+
+  .hovercircleborder {
+    position: absolute;
+    width: 60px; /* Circle size */
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4); /* Slightly transparent
+  white */
+    box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.3);
+    pointer-events: none; /* Allows click events to pass through */
+    transform: translate(-50%, -50%) scale(5);
+    transition: opacity 1s, transform 0.5s;
+    opacity: 0;
+  }
+
+  .content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    vertical-align: middle;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+  }
+
+}

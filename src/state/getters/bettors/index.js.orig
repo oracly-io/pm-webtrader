@@ -1,0 +1,93 @@
+import { get } from '@lib/immutable'
+
+import { ERC20 } from '@constants'
+
+<<<<<<< HEAD
+export function getProfile(state) {
+  const address = get(state, ['bettors', 'active'])
+  const profile = get(state, ['bettors', 'accounts', address])
+  return profile
+}
+
+export function getProfileUsername(state) {
+  return get(getProfile(state), ['username'])
+}
+
+export function getProfileAvatar(state) {
+  return get(getProfile(state), ['avatar'])
+}
+
+export function getProfileBlockchain(state) {
+  return get(getProfile(state), ['blockchain'])
+}
+
+export function getProfileFunds(state) {
+  return get(getProfile(state), ['funds'])
+}
+
+export function getProfileWallet(state) {
+  return get(getProfile(state), ['wallet'])
+}
+
+export function getProfileAddress(state) {
+  return get(getProfile(state), ['address'])
+}
+
+export function getBettorByAddress(state, address) {
+  return get(state, ['bettors', 'accounts', address])
+}
+
+export function getActiveRoundBettors(state) {
+  const round = getActiveRound(state)
+  const bettors = map(round?.bettors, id =>
+    get(state, ['bettors', 'accounts', id])
+  )
+  return bettors
+}
+
+export function isActiveRoundBettor(state, bettorid) {
+  const round = getActiveRound(state)
+  return !isEmpty(get(round?.bettors, [bettorid]))
+}
+
+export function isProfileActiveRoundBettor(state) {
+  const round = getActiveRound(state)
+  const profileid = getProfileAddress(state)
+  return !isEmpty(get(round?.bettors, [profileid]))
+}
+
+=======
+>>>>>>> chat
+export function getAccountByAddress(state, address) {
+  const account = get(state, ['bettors', 'accounts', address])
+  return account
+}
+
+export function getActiveAccountAddress(state) {
+  const address = get(state, ['bettors', 'active'])
+  return address
+}
+
+export function getActiveAccountBalanceERC20(state, erc20) {
+  return getActiveAccountBalance(state, ERC20[erc20])
+}
+
+export function getActiveAccountBalance(state, currency) {
+  const address = getActiveAccountAddress(state)
+  const account = getAccountByAddress(state, address)
+  const balance = get(account, ['balance', currency])
+  return balance
+}
+
+export function getActiveAccountAllowance(state, currency) {
+  const address = getActiveAccountAddress(state)
+  const account = getAccountByAddress(state, address)
+  const balance = get(account, ['allowance', currency])
+  return balance
+}
+
+export function hasActiveAccountAnyPredictionInRound(state, roundid) {
+  const address = getActiveAccountAddress(state)
+  const account = getAccountByAddress(state, address)
+  return get(account, ['hasPredictionInRound', roundid])
+}

@@ -1,0 +1,14 @@
+.header {
+  padding-left: 13px;
+  padding-right: 0;
+  border-bottom: 1px solid var(--header-border-color);
+}
+
+.profileBar {
+  padding-left: 8px;
+  padding-right: 8px;
+
+  .profileBarInner {
+    cursor: default;
+  }
+}

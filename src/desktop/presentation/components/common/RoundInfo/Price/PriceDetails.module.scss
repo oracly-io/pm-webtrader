@@ -1,0 +1,20 @@
+
+.container {
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height .2s ease-out, opacity .2s ease-out;
+  background-color: var(--roundinfo-price-details-bg);
+  border-radius: 20px;
+  padding: 0 24px;
+  opacity: 0.25;
+
+  &.expanded {
+    opacity: 1;
+    max-height: 400px;
+    transition: max-height .2s ease-in, opacity .2s ease-in;
+  }
+}
+
+.details {
+  padding: 8px 0;
+}

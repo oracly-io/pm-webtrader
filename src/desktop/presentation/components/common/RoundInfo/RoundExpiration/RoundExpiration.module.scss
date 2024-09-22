@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 24px;
+  background: var(--roundinfo-expiration-bg);
+  border-radius: 100px;
+
+  > div {
+    width: 1px;
+    height: 32px;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &.expired {
+    background: var(--roundinfo-expired-bg);
+  }
+
+  &.warning {
+
+    .clock {
+      animation: clockring .2s ease-in-out infinite;
+
+      svg path {
+        fill: #f7931a;
+        animation: clockpuls .3s ease-in-out infinite;
+        opacity: 1;
+
+        @keyframes clockpuls {
+          0% { opacity: 1 }
+          50% { opacity: 0.2 }
+          100% { opacity: 1 }
+        }
+      }
+
+      @keyframes clockring {
+        0% { transform: rotate(0deg) translateY(3px) }
+        33% { transform: rotate(30deg) translateY(0px) }
+        66% { transform: rotate(-30deg) translateY(3px) }
+        100% { transform: rotate(0deg) translateY(0px) }
+      }
+    }
+  }
+}
+
+.clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: var(--roundinfo-expiration-clock-bg);
+  border-radius: 50%;
+}
+
+.time {
+  display: block;
+  width: 60px;
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+.title {
+  margin-left: 16px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 15px;
+}
+
+.info {
+  display: flex;
+  padding: 4px;
+  margin-right: 8px;
+  margin-left: auto;
+  cursor: pointer;
+  transition: transform .15s linear;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

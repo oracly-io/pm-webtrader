@@ -1,0 +1,155 @@
+.number {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  color: var(--roundinfo-bettors-number-color);
+
+  &>svg {
+    margin-left: 12px;
+  }
+}
+
+.bettor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  color: var(--predictionlistwidget-prediction-wager-color);
+  position: relative;
+
+  &:not(:first-child) {
+    border-top: 1px solid var(--roundinfo-inner-border-color);
+  }
+}
+
+.position {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+
+  &>svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.amount {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  line-height: 18px;
+  max-width: 180px;
+
+  &>span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.wager {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  padding-left: 16px;
+}
+
+.payout {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 180px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+  color: var(--predictionlistwidget-prediction-prize-color);
+  padding: 8px 0;
+  transition: opacity .1s ease-in-out, font-size .1s ease-in-out;
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &.payment {
+    color: var(--predictionlistwidget-prediction-prize-payment-color);
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+.level {
+  margin-left: 8px;
+}
+
+.percentage {
+  font-size: 13px;
+  line-height: 15px;
+  color: #212233;
+  position: absolute;
+  top: -12px;
+  right: -5px;
+  font-weight: 800;
+  background: var(--predictionlistwidget-prediction-prize-percentage-bg);
+  padding: 2px 4px 1px 5px;
+  border-radius: 16px;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+
+  &>svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.nickname {
+  margin-left: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+
+  &>span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  column-gap: 8px;
+  transition: color .1s linear;
+  color: #ffffff;
+
+  svg {
+    display: flex;
+
+    path {
+      transition: fill .1s linear;
+      fill: var(--roundinfo-transaction-icon-color);
+    }
+  }
+
+  &:hover {
+    color: var(--roundinfo-transaction-icon-color-hover);
+
+    svg path {
+      fill: var(--roundinfo-transaction-icon-color-hover);
+    }
+  }
+}

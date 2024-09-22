@@ -1,0 +1,25 @@
+.gradient {
+  background: linear-gradient(180deg, #F8C462 0%, #FFE5B4 100%, #E7B455 100%);
+  border-radius: 100px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.golden {
+  background: var(--gamepinbar-tile-golden-background);
+}
+
+.silver {
+  background: var(--gamepinbar-tile-silver-background);
+}
+
+.bronze {
+  background: var(--gamepinbar-tile-bronze-background);
+}
+  

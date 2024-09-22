@@ -1,0 +1,72 @@
+.roundprizefundsbar {
+  display: flex;
+  flex-direction: column;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  opacity: 1;
+  transition: opacity .1s ease-in-out;
+
+  &.idel {
+    opacity: 0;
+  }
+
+  .percent {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    z-index: 1;
+
+    &.perup {
+      color: var(--roundprizefundsbar-percent-up-color);
+    }
+
+    &.perdown {
+      color: var(--roundprizefundsbar-percent-down-color);
+    }
+
+    &.perzero {
+      position: absolute;
+      color: var(--roundprizefundsbar-percent-zero-color);
+      left: 10px;
+      transition: top .3s ease-in-out;
+    }
+
+  }
+
+  .lines {
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    width: 5px;
+    margin: 4px 0;
+
+    .lineup {
+      transition: height .3s ease-in-out;
+      width: 5px;
+      border-radius: 7px;
+      background: var(--roundprizefundsbar-line-up-bg);
+    }
+
+    .linedown {
+      transition: height .3s ease-in-out;
+      width: 5px;
+      border-radius: 7px;
+      background: var(--roundprizefundsbar-line-down-bg);
+    }
+
+    .linezero {
+      transition: height .3s ease-in-out;
+      width: 5px;
+      border-radius: 7px;
+      background: var(--roundprizefundsbar-line-zero-bg);
+      margin: 1px 0;
+    }
+
+  }
+
+}

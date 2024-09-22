@@ -1,0 +1,29 @@
+.level {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    display: block;
+  }
+
+  &.bronze {
+    background: var(--common-currency-level-bronze-bg);
+  }
+
+  &.silver {
+    background: var(--common-currency-level-silver-bg);
+  }
+
+  &.gold {
+    background: var(--common-currency-level-gold-bg);
+  }
+
+  &.allinone {
+    background: var(--common-currency-level-allinone-bg);
+  }
+}

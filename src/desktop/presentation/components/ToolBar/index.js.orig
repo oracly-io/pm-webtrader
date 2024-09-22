@@ -1,0 +1,84 @@
+import React, { useCallback, useMemo } from 'react'
+import cn from 'clsx'
+import { map, partial } from 'lodash'
+
+import ButtonProvider from '@components/common/Button'
+import DoubleArrowsIcon from '@components/SVG/DoubleArrows'
+import UsersIcon from '@components/SVG/Users'
+
+import { connect } from '@state'
+import { getActiveToolbar } from '@state/getters'
+import { getActiveAccountAddress } from '@state/getters'
+
+import { TOGGLE_TOOLBAR } from '@actions'
+
+import { TOOLBAR_ROUND, TOOLBAR_PREDICTIONS } from '@constants'
+import { TOOLBAR_CHAT, TOOLBAR_ROUND_CHAT } from '@constants'
+
+import css from '@styles/components/toolbar/index.module.scss'
+
+
+const ToolBar = (props) => {
+
+  const sections = useMemo(() => [
+    { type: TOOLBAR_ROUND, Icon: UsersIcon },
+    { type: TOOLBAR_PREDICTIONS, Icon: TradeIcon },
+    { type: TOOLBAR_CHAT, name: 'GC' },
+    { type: TOOLBAR_ROUND_CHAT, name: 'PC' },
+  ], [])
+
+  const _toggleToolBar = useCallback((type) => { props.TOGGLE_TOOLBAR({ type }) }, [])
+
+  return (
+    <div className={css.toolbar}>
+      <ul className={css.menu}>
+
+        {map(sections, ({ type, Icon, name }) =>
+          <li
+            key={type}
+            className={cn(css.item, { active: props.active === type })}
+          >
+<<<<<<< HEAD
+            <UsersIcon />
+          </ButtonProvider>
+        </li>
+        {props.bettor &&
+          <li className={cn(
+            css.item,
+            { active: props.active === TOOLBAR_PREDICTIONS }
+          )}>
+            <ButtonProvider
+              className={css.button}
+              onClick={showPredictionsToolbar}
+            >
+              <DoubleArrowsIcon />
+            </ButtonProvider>
+          </li>
+        }
+=======
+            <ButtonProvider
+              className={css.button}
+              onClick={partial(_toggleToolBar, type)}
+            >
+              {name && <span style={{ color: '#FFF' }}>{name}</span>}
+              {Icon && <Icon />}
+            </ButtonProvider>
+          </li>
+        )}
+
+>>>>>>> chat
+      </ul>
+    </div>
+  )
+
+}
+
+export default connect(
+  state => ({
+    active: getActiveToolbar(state),
+    bettor: getActiveAccountAddress(state),
+  }),
+  ({ command }) => [
+    command(TOGGLE_TOOLBAR),
+  ]
+)(React.memo(ToolBar))

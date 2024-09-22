@@ -1,0 +1,59 @@
+{
+  "short_name": "Oracly",
+  "name": "Oracly Web Trader",
+  "description": "Need to put here some description",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "img/pwa/icon-small.webp",
+      "sizes": "144x144",
+      "type": "image/webp"
+    },
+    {
+      "src": "img/pwa/icon-large.webp",
+      "sizes": "256x256",
+      "type": "image/webp"
+    }
+  ],
+  "screenshots" : [
+    {
+      "src": "img/pwa/desktop-round-bar.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide"
+    },
+    {
+      "src": "img/pwa/desktop-activity-bar.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide"
+    },
+    {
+      "src": "img/pwa/desktop-chat-bar.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide"
+    },
+    {
+      "src": "img/pwa/mobile-main.webp",
+      "sizes": "1179x2556",
+      "type": "image/webp",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "img/pwa/mobile-activity.webp",
+      "sizes": "1179x2556",
+      "type": "image/webp",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "img/pwa/mobile-games.webp",
+      "sizes": "1179x2556",
+      "type": "image/webp",
+      "form_factor": "narrow"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "prefer-related-application": false
+}

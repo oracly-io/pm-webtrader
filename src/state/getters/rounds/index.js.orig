@@ -1,0 +1,92 @@
+import { pickBy, orderBy, isEmpty, pick } from 'lodash'
+
+import { get } from '@lib/immutable'
+import { getPredictionById } from '@state/getters'
+import { getActiveGame, getGameById } from '@state/getters/games'
+import { getActiveGameId } from '@state/getters/ui'
+import { toActualRound, toActualRoundId } from '@state/mappers'
+
+function _getRounds(state) {
+  return get(state, ['rounds', 'collection'])
+}
+
+export function getRounds(state) {
+  return _getRounds(state)
+}
+
+export function getRoundById(state, roundid) {
+  return get(_getRounds(state), [roundid])
+}
+
+export function getRoundsByIds(state, roundids) {
+  return pick(_getRounds(state), roundids)
+}
+
+export function getActiveGameRounds(state) {
+  const game = getActiveGame(state)
+  if (!game) return {}
+
+  const gameid = game.gameid
+
+  // TODO: implemet indexator reducer __idx__
+  // const roundids = get(state, ['__idx__', 'round', 'gameid', gameid])
+  // const rounds = pick(_getRounds(), roundids)
+  const rounds = pickBy(_getRounds(state), { gameid })
+
+  const actual = toActualRound(game)
+  rounds[actual.roundid] = rounds[actual.roundid] || actual
+
+  const ordered = orderBy(rounds, 'endDate')
+
+  return ordered
+}
+
+export function getActiveGameRoundsHistory(state) {
+  const gameid = getActiveGameId(state)
+  return get(state, ['rounds', 'history', 'roundids', gameid])
+}
+
+export function getActualRound(state, gameid) {
+  const game = getGameById(state, gameid)
+  if (isEmpty(game)) return {}
+
+  const actual = toActualRound(game)
+  return getRoundById(state, actual?.roundid) || actual
+}
+
+export function getActualRoundId(state, gameid) {
+  const game = getGameById(state, gameid)
+  if (isEmpty(game)) return {}
+
+  const roundid = toActualRoundId(game)
+  return roundid
+}
+
+export function getRoundByPredictionId(state, predictionid) {
+  const prediction = getPredictionById(state, predictionid)
+
+  const round = getRoundById(state, prediction?.roundid)
+  if (!isEmpty(round)) return round
+
+  const actualround = getActualRound(state, prediction.gameid)
+  if (actualround.roundid === prediction.roundid) return actualround
+
+  return null
+}
+
+//////////////////////////// old
+
+<<<<<<< HEAD
+export function getActiveRound(state) {
+  return null
+}
+
+export function getActiveRoundId(state) {
+  return null
+=======
+export function getRoundByPredictionId(state, predictionid) {
+  const prediction = getPredictionById(state, predictionid)
+
+  return getRoundById(state, prediction?.roundid)
+>>>>>>> chat
+}

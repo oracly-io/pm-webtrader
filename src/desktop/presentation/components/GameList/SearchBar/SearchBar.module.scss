@@ -1,0 +1,41 @@
+.searchbar {
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  .value {
+    font-family: 'Proxima Nova', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    padding: 18px 24px 18px 50px;
+    color: var(--gamelist-searchbar-value-color);
+    background: var(--gamelist-searchbar-value-bg);
+    border-radius: 77px;
+    outline: 0;
+    border: 0;
+    width: 100%;
+
+    &::placeholder {
+      color: var(--gamelist-searchbar-value-color);
+      font-family: 'Proxima Nova', sans-serif;
+      font-weight: 400;
+      font-style: 16px;
+    }
+  }
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  display: flex;
+  transform: translateY(-50%);
+  cursor: text;
+
+  svg path {
+    fill: var(--gamelist-searchbar-value-color);
+  }
+}

@@ -1,0 +1,7 @@
+.pheader {
+  border-top: 1px solid var(--roundinfo-resolution-border-color);
+
+  &.expanded {
+    border-color: transparent;
+  }
+}

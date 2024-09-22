@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 9px;
+  width: 150px;
+  height: 40px;
+  margin: 0 auto;
+  margin-top: 8px;
+  background: transparent;
+  color: var(--roundinfo-details-hide-color);
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 16px;
+  user-select: none;
+  cursor: pointer;
+  max-height: 0px;
+  overflow: hidden;
+  transition: background-color .2s linear, max-height .2s ease-in, opacity .2s ease-in;
+  opacity: 0.25;
+
+  &.expanded {
+    opacity: 1;
+    max-height: 40px;
+  }
+
+  &:hover {
+    background: var(--roundinfo-details-hide-bg-hover);
+  }
+
+  &:active {
+    background: var(--roundinfo-details-hide-bg-active);
+  }
+
+  svg {
+    path {
+      fill: var(--roundinfo-details-hide-color);
+    }
+  }
+}

@@ -1,0 +1,297 @@
+.game {
+  $border: 1px;
+
+  position: relative;
+  background: var(--gamelist-round-bg);
+  border-radius: 77px;
+  cursor: pointer;
+  user-select: none;
+  border: $border solid transparent;
+  transition: background-color .2s linear;
+
+  &:not(:first-child) {
+    margin-top: 17px;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      right: 16px;
+      height: 1px;
+      background: #20315E;
+    }
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -$border;
+    border-radius: inherit;
+    background: transparent;
+  }
+
+  .inner {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    border-radius: inherit;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &.pined:not(.selected) {
+    background: var(--gamelist-round-bg-pined);
+    border: $border solid var(--gamelist-round-border-color-pined);
+
+    &:before {
+      background: transparent;
+    }
+
+    &:after, &+ .game:after {
+      background: transparent;
+    }
+  }
+
+  &.selected {
+    background: var(--gamelist-round-bg-selected);
+
+    &:before {
+      background: var(--gamelist-round-border-color-selected);
+    }
+
+    &:after, &+ .game:after {
+      background: transparent;
+    }
+  }
+
+  &:hover:not(.selected) {
+    background: var(--gamelist-round-bg-hover);
+
+    // &:before {
+    //   background: transparent;
+    // }
+  }
+
+  &:active:not(.selected) {
+    background: var(--gamelist-round-bg-active);
+  }
+
+  &.unlocked {
+    .roundwrapper {
+      .round {
+        background: var(--gamepinbar-tile-round-unlocked-bg);
+
+        .icon {
+          svg {
+            width: 18px;
+            height: 18px;
+          }
+        }
+      }
+    }
+
+    .inner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background: var(--gamelist-round-bg-anim);
+      animation: gradient 4s linear infinite;
+    }
+
+    @keyframes gradient {
+      0% {
+        left: 0;
+        width: 100%;
+      }
+
+      25% {
+        left: 0;
+        width: 200%;
+      }
+
+      50% {
+        left: 0;
+        width: 100%;
+      }
+
+      75% {
+        left: -100%;
+        width: 200%;
+      }
+
+      100% {
+        left: 0%;
+        width: 100%;
+      }
+    }
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+    z-index: 1;
+
+    .flags {
+      align-self: center;
+      display: flex;
+
+      &>svg {
+        width: 40px;
+        height: 40px;
+        z-index: 1;
+        border: 2px solid var(--gamelist-round-base-border-color);
+        border-radius: 50%;
+
+        &~svg {
+          margin-left: -8px;
+          z-index: 0;
+        }
+      }
+    }
+
+    .event {
+      display: flex;
+      flex-direction: column;
+      margin-left: 15px;
+    }
+
+    .top {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+    }
+
+    .profit {
+      display: flex;
+      align-items: center;
+      column-gap: 5px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      color: #FFFFFF;
+    }
+
+    .percent {
+      line-height: 1;
+    }
+
+    .time {
+      font-size: 13px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      line-height: 0.75;
+      color: var(--gamelist-round-name-color);
+      user-select: none;
+    }
+
+    .name {
+      margin-top: 12px;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 0.75;
+      white-space: nowrap;
+      color: var(--gamelist-round-name-color);
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    margin-left: 48px;
+
+    .bank {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+
+      .amount {
+        color: #ffffff;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+      }
+
+      .icon {
+        display: flex;
+
+        svg {
+          width: 20px;
+          height: 20px;
+
+          path {
+            fill: #FFFFFF;
+          }
+        }
+      }
+    }
+
+    .roundwrapper {
+      margin-left: 12px;
+      flex-direction: row-reverse;
+      display: flex;
+      width: 70px;
+
+      .round {
+        display: flex;
+        align-items: center;
+        padding: 7px 9px 7px 11px;
+        border-radius: 77px;
+        color: var(--gamepinbar-tile-tillpayout-color);
+
+        .tillpayout {
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 15px;
+          text-align: center;
+        }
+
+        .icon {
+          display: flex;
+          margin-left: 5px;
+        }
+      }
+    }
+
+    .pietimer {
+      display: flex;
+      align-items: center;
+      margin-left: 16px;
+
+      .tillpayoutprogress circle {
+        stroke-width: 2;
+        stroke: var(--betbar-tillpayoutprogress-border-color);
+      }
+
+      .timeprogress circle {
+        stroke-width: 2;
+        stroke: var(--gamelist-round-timeprogress-border-color);
+      }
+
+      .locktimer {
+        padding: 4px;
+        border-radius: 50%;
+        border: 1px solid transparent;
+
+        svg {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.level svg path {
+  fill: var(--gamelist-round-currency-level-fill);
+}

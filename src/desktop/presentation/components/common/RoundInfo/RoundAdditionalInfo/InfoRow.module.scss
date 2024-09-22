@@ -1,0 +1,68 @@
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  width: 100%;
+
+  &:not(:first-child) {
+    border-top: 1px solid var(--roundinfo-price-details-row-border);
+  }
+}
+
+.description {
+  color: var(--roundinfo-price-details-description-color);
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.valueContainer {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #FFFFFF;
+}
+
+.value {
+  padding-left: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  &:first-child {
+    padding-left: 0;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color .1s linear;
+
+  &:hover {
+    color: var(--roundinfo-transaction-icon-color-hover);
+  }
+}
+
+.icon {
+  display: flex;
+
+  svg {
+    height: 16px;
+    width: 14px;
+  }
+
+  &:hover {
+    svg path {
+      fill: var(--roundinfo-transaction-icon-color-hover);
+    }
+  }
+
+  svg path {
+    transition: fill .1s linear;
+    fill: var(--roundinfo-transaction-icon-color);
+  }
+}

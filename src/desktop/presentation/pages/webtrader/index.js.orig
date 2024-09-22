@@ -1,0 +1,101 @@
+import React from 'react'
+import cn from 'clsx'
+import { useTitle } from 'react-use'
+import { isEmpty } from 'lodash'
+
+import { connect } from '@state'
+import { getActiveToolbar } from '@state/getters'
+import { TOOLBAR_ROUND, TOOLBAR_PREDICTIONS } from '@constants'
+import { TOOLBAR_CHAT, TOOLBAR_ROUND_CHAT } from '@constants'
+
+import { useTranslate } from '@lib/i18n-utils'
+
+import GamePinBar from '@components/GamePinBar'
+import ProfileBar from '@components/ProfileBar'
+import ToolBar from '@components/ToolBar'
+import Content from '@components/Content'
+import NavBar from '@components/NavBar'
+import BetBar from '@components/BetBar'
+import ActualRoundInfo from '@components/ToolBar/ActualRoundInfo'
+import PredictionListWidget from '@components/ToolBar/PredictionListWidget'
+import GameList from '@components/GameList'
+import RoundPrizefundsBar from '@components/RoundPrizefundsBar'
+import GlobalChatWidget from '@components/ChatWidget/GlobalChat'
+import RoundChatWidget from '@components/ChatWidget/RoundChat'
+import RoundPopover from '@components/RoundPopover'
+<<<<<<< HEAD
+import ConnectBar from '@components/ConnectBar'
+
+import BlockchainUpdater from '@components/common/BlockchainUpdater'
+=======
+import BettorRoundListener from '@components/Listeners/BettorRound'
+>>>>>>> chat
+
+import css from '@styles/pages/webtrader.module.scss'
+
+const WebTrader = (props) => {
+  const t = useTranslate()
+  useTitle(t('OraclyV1 Web Trader Platform'))
+
+  return <>
+
+    <BettorRoundListener />
+
+    <div className={css.webtrader}>
+      <BlockchainUpdater />
+      <div className={css.navbar}>
+        <NavBar />
+      </div>
+      <div className={css.header}>
+        <GamePinBar />
+        <ProfileBar />
+      </div>
+      <div className={css.toolbar}>
+        <ToolBar />
+      </div>
+      <div className={css.body}>
+        <div className={css.content}>
+          <Content />
+          <RoundPrizefundsBar />
+        </div>
+      </div>
+      <RoundPopover />
+      {props.activeToolbar === TOOLBAR_ROUND &&
+        <div className={css.roundinfo}>
+          <ActualRoundInfo />
+        </div>
+      }
+      {props.activeToolbar === TOOLBAR_PREDICTIONS &&
+        <div className={css.predictionlistwidget}>
+          <PredictionListWidget />
+        </div>
+      }
+      {activeToolbar === TOOLBAR_CHAT &&
+        <div className={css.chatwidget}>
+          <GlobalChatWidget />
+        </div>
+      }
+      {activeToolbar === TOOLBAR_ROUND_CHAT &&
+        <div className={css.chatwidget}>
+          <RoundChatWidget />
+        </div>
+      }
+      <div className={cn(css.betbar, {
+        [css.offset]: !isEmpty(props.activeToolbar)
+      })}>
+        <BetBar />
+      </div>
+
+      <ConnectBar />
+      <GameList />
+    </div>
+
+  </>
+
+}
+
+export default connect(
+  state => ({
+    activeToolbar: getActiveToolbar(state)
+  })
+)(React.memo(WebTrader))

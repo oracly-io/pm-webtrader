@@ -1,0 +1,51 @@
+.scrolltonow {
+  position: absolute;
+  top: 50%;
+  right: 100px;
+  transform: translateY(-50%);
+
+  &:hover {
+    .container {
+      transform: translateX(8%);
+      background: #1f44b890;
+    }
+  }
+
+  &:active {
+    .container {
+      transform: translateX(12%);
+      background: #1F50F7A0;
+    }
+  }
+
+  .container {
+    width: 40px;
+    height: 72px;
+    margin-right: 0;
+    background: #1E397970;
+    border-radius: 24px;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s ease-in;
+    transition: transform .1s ease-out, background-color .1s ease-out;
+    user-select: none;
+    cursor: pointer;
+
+    @keyframes fadeIn {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      90% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0%);
+        opacity: 1;
+      }
+    }
+  }
+}

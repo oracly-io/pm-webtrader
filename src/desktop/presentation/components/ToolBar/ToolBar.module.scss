@@ -1,0 +1,58 @@
+.toolbar {
+  padding-bottom: 8px;
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 0;
+    margin: 19px 0;
+    list-style: none;
+
+    .item {
+      display: flex;
+      justify-content: center;
+      position: relative;
+
+      &~.item {
+        margin-top: 16px;
+      }
+
+      &.selected {
+        .button {
+          background: var(--toolbar-icon-bg-selected);
+
+          &:hover {
+            background: var(--toolbar-icon-bg-selected);
+          }
+        }
+      }
+
+      .button {
+        width: 56px;
+        height: 56px;
+        border-radius: 20px;
+        transition: background-color .3s linear;
+
+        svg {
+          width: 24px;
+          height: 24px;
+
+          path {
+            fill: #D0D7FF;
+          }
+        }
+      }
+
+      .button {
+        &:hover {
+          background: var(--toolbar-icon-bg-hover);
+        }
+
+        &:active {
+          background: var(--toolbar-icon-bg-active);
+        }
+      }
+    }
+  }
+}

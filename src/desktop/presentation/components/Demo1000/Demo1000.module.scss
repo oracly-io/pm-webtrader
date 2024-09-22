@@ -1,0 +1,118 @@
+.animatedBtn {
+  width: fit-content;
+  height: 56px;
+  border-radius: 100px;
+  transition: all .2s linear;
+  margin-left: 16px;
+}
+
+.container {
+  $border: 1px;
+
+  position: relative;
+  padding: 7px 24px 7px 7px;
+  border-radius: 100px;
+  border: $border solid transparent;
+  cursor: pointer;
+  user-select: none;
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: -$border;
+    border-radius: inherit;
+  }
+
+  .gradient {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    border-radius: inherit;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      animation: gradient 4s linear infinite;
+    }
+
+    @keyframes gradient {
+      0% {
+        left: 0;
+        width: 100%;
+      }
+
+      25% {
+        left: 0;
+        width: 200%;
+      }
+
+      50% {
+        left: 0;
+        width: 100%;
+      }
+
+      75% {
+        left: -100%;
+        width: 200%;
+      }
+
+      100% {
+        left: 0%;
+        width: 100%;
+      }
+    }
+  }
+
+  &.green {
+    background: var(--header-bg) linear-gradient(var(--payout-green-bg) 0%, var(--payout-green-bg) 100%) padding-box;
+    color: var(--payout-green-color);
+
+    &:before {
+      background: var(--payout-green-border);
+    }
+
+    .gradient {
+      &:before {
+        background: var(--payout-green-gradient);
+      }
+    }
+  }
+
+  .coin {
+
+    &.green {
+      box-shadow: var(--payout-green-coin-shadow);
+    }
+
+  }
+
+}
+
+.amount {
+  margin-left: 11px;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+}

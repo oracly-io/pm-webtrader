@@ -1,0 +1,82 @@
+.container {
+  background-color: #152B5D;
+  border-radius: 32px;
+  padding: 40px 56px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  margin-top: 17px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.nickname {
+  max-width: revert;
+  font-size: 32px;
+  line-height: 38px;
+  font-weight: 600;
+  margin: 0 auto;
+}
+
+.address {
+  color: #D0D7FF;
+  font-family: 'Proxima Nova', sans-serif;
+  font-weight: 300;
+  line-height: 16px;
+  font-size: 13px;
+}
+
+.message {
+  font-family: 'Proxima Nova', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 23px;
+  margin-top: 31px;
+}
+
+.joinBtn,
+.declineBtn {
+  width: 320px;
+  border-radius: 100px;
+  font-weight: 600;
+}
+
+.joinBtn {
+  margin-top: 48px;
+  height: 56px;
+  background: #2050f7;
+
+  &:hover {
+    background: #3350FF;
+  }
+
+  &:active {
+    background: #5E75FF;
+  }
+}
+
+.declineBtn {
+  margin-top: 24px;
+  height: 48px;
+  background: #152B5D;
+
+  &:hover {
+    background: #152B5D;
+  }
+
+  &:active {
+    background: #5E75FF;
+  }
+}

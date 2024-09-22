@@ -1,0 +1,51 @@
+.message {
+  display: flex;
+  padding-bottom: 16px;
+
+  &.phantom {
+    display: none;
+  }
+
+  .inner {
+    display: flex;
+    padding: 12px 18px 12px 12px;
+    border-radius: 24px;
+    flex: 1;
+    background: var(--chatwidget-system-message-bg);
+    border: 1px solid var(--chatwidget-system-border);
+    justify-content: center;
+		max-width: 100%;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 4px;
+
+      .timestamp {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 18px;
+        color: var(--chatwidget-author-color);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .text {
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 24px;
+      color: var(--chatwidget-system-text-color);
+			overflow-wrap: anywhere;
+    }
+  }
+}

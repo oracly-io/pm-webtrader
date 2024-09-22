@@ -1,0 +1,26 @@
+.topbettors {
+  display: flex;
+  align-items: stretch;
+  padding: 16px;
+  border-radius: 77px;
+  border: 1px solid var(--roundinfo-inner-border-color);
+}
+
+.avatars {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 32px;
+  overflow: hidden;
+}
+
+.avatar {
+  :global(.ava) {
+    width: 32px;
+    height: 32px;
+  }
+
+  & ~ .avatar {
+    margin-left: 8px;
+  }
+}

@@ -1,0 +1,83 @@
+.container {
+  position: fixed;
+  bottom: -127px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  padding: 8px 8px 24px 8px;
+  background: var(--betbar-numpad-background-color);
+  box-shadow: 0px 0px 56px var(--betbar-numpad-shadow-color);
+  backdrop-filter: blur(36px);
+  transition: transform .1s ease-out;
+}
+.open {
+  transform: translateY(-100%);
+}
+
+.buttonsRow {
+  display: flex;
+  gap: 3px;
+  height: 46px;
+
+  &:first-of-type {
+    margin-bottom: 3px;
+    .button {
+      &:first-of-type {
+        border-top-left-radius: 16px;
+      }
+
+      &:last-of-type {
+        border-top-right-radius: 16px;
+      }
+    }
+  }
+
+  &:last-of-type {
+    .button {
+      &:first-of-type {
+        border-bottom-left-radius: 16px;
+      }
+
+      &:last-of-type {
+        border-bottom-right-radius: 16px;
+      }
+    }
+  }
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--betbar-numpad-button-background-color);
+  border: 1px solid var(--betbar-numpad-button-border-color);
+
+  border-radius: 8px;
+
+  flex: 1;
+
+  font-family: 'Gilroy';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+
+  color: var(--betbar-numpad-button-text-color);
+
+  transition: all .1s ease-out;
+
+  &:active {
+    background: var(--betbar-numpad-button-background-active-color);
+    border: 1px solid var(--betbar-numpad-button-border-active-color);
+    color: var(--betbar-numpad-button-text-active-color);
+  }
+}
+
+.bigbutton {
+  flex: 2;
+}

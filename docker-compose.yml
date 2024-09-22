@@ -1,0 +1,76 @@
+---
+version: "3.0"
+services:
+  oracly:
+    image: node:18.12.0
+    user: "${UID:-node}:${GID:-node}"
+    tty: "${TTY:-true}"
+    working_dir: /build
+    volumes:
+      - ./:/build
+      - ../pm-stickchart:/pm-stickchart
+      - ../pm-react-components:/pm-react-components
+      - ../pm-wallet:/pm-wallet
+      - ../pm-libs:/pm-libs
+    command: sh -c "
+      rm -rf node_modules/pm-* &&
+      npm install -d &&
+      npm audit fix || true &&
+      echo -c '/pm-libs/bin/link' &&
+      echo -c '/pm-stickchart/bin/link' &&
+      echo -c '/pm-react-components/bin/link' &&
+      echo -c '/pm-wallet/bin/link' &&
+      npm run build:lde"
+    environment:
+      NPM_CONFIG_PREFIX: "~/.npm-inner"
+
+      PM_BASE_PATH: "/"
+      ST_BASE_PATH: "/"
+      MT_BASE_PATH: "/"
+
+      CONTENT_PUBLIC_PATH: "/"
+      APPLICATION_TYPE: "desktop"
+      LOCIZE_PROJECT_ID: "${LOCIZE_PROJECT_ID}"
+      LOCIZE_API_KEY: "${LOCIZE_API_KEY}"
+      BUILD_BUNDLE_REPORT: "true"
+      BUILD_BUNDLE_REPORT_DEBUG: "false"
+      ANALYTICS_ENABLED: "false"
+      TRACE_ACTIONS: "true"
+      NODE_ENV: "development"
+      PORT: "8800"
+
+      # LOCAL CLUSTER
+      # WEBAPI_URL: "http://localhost:8802/v1/"
+      CHAT_REST_URL: "http://localhost:8803/chatapi/v1"
+      CHAT_WS_URL: "ws://localhost:8803"
+      # WEB3_LDE_CHAIN_ID: 31337
+      # WEB3_LDE_CHAIN_URL: 'http://localhost:8545'
+
+      # PRODUCTION CLUSTER
+      # USERDATA_URL: "https://user.oracly.io"
+      # WEBAPI_URL: "https://webapi.oracly.io/v1/"
+      #
+      # STAGING CLUSTER
+      WEBAPI_URL: "https://app.staging.oracly.io/v1/"
+      USERDATA_URL: "https://app.staging.oracly.io/userdata"
+      USERDATA_AVA_URL: "https://app.staging.oracly.io/ava/output"
+
+      DEBUG_COLORS: "true"
+      DEBUG: "pm:*"
+    ports:
+      - '8800:${PORT:-8800}'
+
+  # translation-scanner:
+  #   image: git.oracly.com:5001/oracly/translation-scanner:${IMAGE_TAG:-master}
+  #   volumes:
+  #     - .:/oracly
+  #   command: sh -c "
+  #     npm install --silent &&
+  #     npm run compare"
+  #   environment:
+  #     LOCIZE_PROJECT_ID: ""
+  #     LOCIZE_API_KEY: ""
+  #     LANGUAGES: "es,en"
+  #     PROJECT_SRC: "/oracly/src"
+  #     PUBLISH_MISSED_KEYS: "true"
+  #     SAVE_KEYS_LOCALLY: "true"

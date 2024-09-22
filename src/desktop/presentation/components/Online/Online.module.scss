@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 8px;
+}
+
+.icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.circle {
+  display: block;
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 50%;
+
+  &.success {
+    background-color: #02A179;
+  }
+
+  &.error {
+    background-color: #D7335B;
+  }
+}
+
+.spinner {
+  width: 15px;
+  height: 15px;
+  border-color: #B7BDD7;
+}
+
+.amount {
+  line-height: 15px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #B7BDD7;
+}

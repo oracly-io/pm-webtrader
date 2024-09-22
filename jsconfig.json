@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "module": "commonjs",
+    "paths": {
+      "@/*": ["src/*"],
+      "@actions/*": ["src/state/actions.js"],
+      "@asynchronous/*": ["src/asynchronous/*"],
+      "@boot/*": ["src/boot/*"],
+      "@components/*": ["src/presentation/components/*"],
+      "@config/*": ["src/config/*"],
+      "@constants": ["src/constants/*"],
+      "@lib/*": ["src/lib/*"],
+      "@pages/*": ["src/presentation/pages/*"],
+      "@routing/*": ["src/routing/*"],
+      "@state/*": ["src/state/*"],
+      "@static/*": ["static/*"],
+      "@styles/*": ["src/styles/*"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

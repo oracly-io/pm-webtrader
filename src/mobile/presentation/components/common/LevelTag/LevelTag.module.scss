@@ -1,0 +1,17 @@
+.leveltag {
+  color: var(--website-bg);
+  border-radius: 77px;
+  padding: 4px 8px 3px 8px;
+  font-weight: 700;
+  font-family: 'Proxima Nova', sans-serif;
+
+  &.bronze {
+    background: var(--resolvedpredictionwidget-bronze-bg);
+  }
+  &.silver {
+    background: var(--resolvedpredictionwidget-silver-bg);
+  }
+  &.gold {
+    background: var(--resolvedpredictionwidget-gold-bg);
+  }
+}

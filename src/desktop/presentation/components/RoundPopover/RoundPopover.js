@@ -1,0 +1,142 @@
+import React, { useCallback } from 'react'
+import { isEmpty, find } from 'lodash'
+import { nowUnixTS } from '@oracly/pm-libs/date-utils'
+
+import { FOCUS_ROUND } from '@actions'
+import { NOCONTEST } from '@constants'
+import CloseIcon from '@components/SVG/ResolvedPredictionClose'
+import PrizefundDistributionLines from '@components/common/PrizefundDistributionLines'
+import RoundInfo from '@components/common/RoundInfo'
+import RoundResolution from '@components/common/RoundInfo/RoundResolution'
+import RoundMain from '@components/common/RoundInfo/RoundMain'
+import RoundHistory from '@components/common/RoundInfo/RoundHistory'
+import RoundData from '@components/common/RoundInfo/RoundData'
+import RoundActualPredictions from '@components/common/RoundInfo/RoundActualPredictions'
+import RoundHistoricalPredictions from '@components/common/RoundInfo/RoundHistoricalPredictions'
+import RoundExpiration from '@components/common/RoundInfo/RoundExpiration'
+import RoundAdditionalInfo, { InfoIcon } from '@components/common/RoundInfo/RoundAdditionalInfo'
+import { PriceProvider } from '@components/common/RoundInfo/Price'
+import LevelTag from '@components/common/LevelTag'
+import RoundGroupTitle from '@components/common/RoundInfo/RoundGroupTitle'
+import { useRenderAt } from '@hooks'
+import { useTranslate } from '@lib/i18n-utils'
+import { connect } from '@state'
+import { getRoundById, getFocusRoundId } from '@state/getters'
+
+import css from './RoundPopover.module.scss'
+
+const hasWinPrediction = (predictions, resolution) => !!find(predictions, (prediction =>
+  !prediction.phantom && (
+    prediction.position === resolution ||
+    resolution === NOCONTEST
+  )
+))
+
+const RoundPopover = (props) => {
+
+  const round = props.round
+
+  const t = useTranslate()
+
+  const close = useCallback(() => props.FOCUS_ROUND({ roundid: null }), [])
+
+  const isActual = round?.endDate > nowUnixTS()
+  useRenderAt(round?.endDate)
+  useRenderAt(round?.expirationDate)
+
+  if (isEmpty(round)) return null
+
+  return (
+    <div className={css.focusround}>
+
+      <span className={css.close} onClick={close}>
+        <CloseIcon />
+      </span>
+
+      <RoundInfo className={css.roundinfo} round={round}>
+
+        {({ round, settlment, game, resolution, bettorpredictions }, ref) => (
+          <>
+            {!isActual && !isEmpty(bettorpredictions) && (
+              <>
+                <RoundGroupTitle className={css.title} title={t('Predictions')} />
+                {hasWinPrediction(bettorpredictions, resolution) && <RoundExpiration key={round.roundid} round={round} />}
+                <RoundHistoricalPredictions
+                  className={css.predictions}
+                  predictions={bettorpredictions}
+                  round={round}
+                  game={game}
+                />
+              </>
+            )}
+
+            <PriceProvider>
+              <RoundGroupTitle
+                className={css.title}
+                title={t('Round info')}
+                htmlTitle={round.roundid}
+              >
+                <LevelTag game={game} className={css.level} />
+                <InfoIcon />
+              </RoundGroupTitle>
+              <div>
+                <RoundAdditionalInfo round={round} />
+                <RoundData className={css.rounddata}>
+                  <RoundMain round={round} game={game} />
+
+                  <PrizefundDistributionLines
+                    className={css.prizefunds}
+                    prizefunds={round.prizefunds}
+                    currency={round.currency}
+                    level={game.level}
+                  />
+
+                  <RoundResolution
+                    headerClassName={css.resolutionHeader}
+                    detailsClassName={css.resolutionDetails}
+                    round={round}
+                    game={game}
+                    settlment={settlment}
+                    unverifiedResolution={resolution}
+                  />
+                </RoundData>
+              </div>
+            </PriceProvider>
+            {isActual && !isEmpty(bettorpredictions) && (
+              <>
+                <RoundGroupTitle className={css.title} title={t('Predictions')} />
+                <RoundActualPredictions
+                  className={css.predictions}
+                  winClassName={css.actualPredictionWin}
+                  predictions={bettorpredictions}
+                  round={round}
+                  game={game}
+                />
+              </>
+            )}
+
+            <RoundHistory
+              tagClassName={css.historyTag}
+              predictionClassName={css.historyPrediction}
+              titleClassName={css.title}
+              round={round}
+              game={game}
+              customScrollParentRef={ref}
+            />
+          </>
+        )}
+
+      </RoundInfo>
+    </div>
+  )
+
+}
+
+export default connect(
+  (state) => ({
+    round: getRoundById(state, getFocusRoundId(state))
+  }),
+  ({ query }) => [
+    query(FOCUS_ROUND),
+  ]
+)(React.memo(RoundPopover))

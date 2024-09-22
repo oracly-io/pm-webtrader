@@ -1,0 +1,55 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+    "codeFrame": false,
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  },
+  "plugins": [ "eslint-plugin-react" ],
+  "globals": {
+    "AppBoot": true,
+    "process": false,
+    "require": false,
+    "Promise": false,
+    "BigInt": false
+  },
+  "rules": {
+    "quotes": [2, "single"],
+    "camelcase": 0,
+    "no-console": 1,
+    "no-debugger": 1,
+    "jsx-quotes": [2, "prefer-double"],
+    "operator-linebreak": [2, "after", { "overrides": { "?": "before", ":": "before" } }],
+    "semi": [2, "never"],
+    "no-unused-vars": ["error", { "args": "none" }],
+    "react/prop-types": 0,
+    "react/no-deprecated": 0,
+    "no-trailing-spaces": 2,
+    "react/react-in-jsx-scope": 0,
+    "react/jsx-no-target-blank": 1,
+    "react-hooks/exhaustive-deps": 0,
+    "no-useless-escape": 0,
+    "no-empty-function": "warn",
+    "no-self-assign": 0
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  }
+}

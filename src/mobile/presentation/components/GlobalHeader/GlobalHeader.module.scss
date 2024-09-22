@@ -1,0 +1,11 @@
+.connect {
+  display: none;
+}
+
+.header {
+  top: env(safe-area-inset-top);
+  position: relative;
+  -webkit-box-shadow: 0px 8px 10px 2px #081327;
+  -moz-box-shadow: 0px 8px 10px 2px #081327;
+  box-shadow: 0px 8px 10px 2px #081327;
+}

@@ -1,0 +1,27 @@
+.container {
+  color: white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background-color: #0F1F43;
+  cursor: pointer;
+  user-select: none;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+}
+
+.body {
+  padding: 12px 8px;
+  background-color: #0F1F43;
+  color: #ffffff;
+  border-radius: 28px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .3);
+}

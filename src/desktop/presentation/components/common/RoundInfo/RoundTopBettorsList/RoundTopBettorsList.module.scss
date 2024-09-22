@@ -1,0 +1,56 @@
+.container {
+  scrollbar-color: var(--predictionlistwidget-scroll-thumb) var(--predictionlistwidget-scroll-track);
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  padding: 16px;
+  padding-bottom: 0;
+  flex-grow: 1;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--predictionlistwidget-scroll-thumb);
+    border-radius: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--predictionlistwidget-scroll-track);
+    border-radius: 7px;
+  }
+}
+
+// Giving it height fixes absence of list on small devices
+.virtuoso {
+  height: 1px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 8px;
+  border: 1px solid #577BF8;
+  margin-top: 10px;
+  border-radius: 24px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.loadMoreText {
+  margin: 0 auto;
+  color: #FFFFFF;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  transform: translateX(-16px);
+}
+
+.loadMoreIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+}

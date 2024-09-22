@@ -1,0 +1,1 @@
+export { getModalByType } from './modals.utils'

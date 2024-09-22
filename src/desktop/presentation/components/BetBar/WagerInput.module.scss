@@ -1,0 +1,105 @@
+:global(.zero) {
+  .container {
+    pointer-events: none;
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 176px;
+  height: 72px;
+  padding: 12px 11px;
+  background: var(--betbar-amount-bg);
+  border-radius: 20px;
+}
+
+.content {
+  display: flex;
+  cursor: text;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.label {
+  color: var(--betbar-ratetitle-color);
+  font-family: 'Proxima Nova', sans-serif;
+  line-height: 0.7;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: auto;
+  user-select: none;
+
+  .value {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .currency {
+    margin-left: 4px;
+    font-size: 12px;
+    font-weight: 300;
+    opacity: 0.7;
+  }
+}
+
+.input {
+  display: block;
+  box-sizing: content-box;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--betbar-ratevalue-color);
+  font-family: 'Gilroy', sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  text-align: center;
+
+  &:focus {
+    box-shadow: none;
+    outline: 0;
+  }
+}
+
+.control {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 28px;
+  height: 28px;
+  background: var(--betbar-control-bg);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform .1s linear;
+
+  &:hover:not(.disabled) {
+    transform: scale(1.1);
+  }
+
+  &:active:not(.disabled) {
+    transform: scale(1.175);
+  }
+
+  &.disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+
+  span {
+    width: 14px;
+    height: 2px;
+    background: var(--betbar-control-color);
+    border-radius: 1px;
+
+    &~span {
+      transform: rotate(90deg);
+      position: absolute;
+    }
+  }
+}

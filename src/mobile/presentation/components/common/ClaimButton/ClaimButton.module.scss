@@ -1,0 +1,78 @@
+.btn {
+  border: none;
+  padding: 0;
+  position: relative;
+  font-family: 'Proxima Nova', sans-serif;
+  border-radius: 16px;
+  margin: 24px -8px 0 -8px;
+  color: var(--predictionlistwidget-prediction-withdraw-color);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 52px;
+  width: calc(100% + 16px);
+  height: 52px;
+  user-select: none;
+  transition: all .2s linear;
+  overflow: hidden;
+
+  .text {
+    z-index: 2;
+    position: relative;
+  }
+
+  .fragment {
+    display: flex;
+    width: calc(100% + 75px);
+    position: absolute;
+    top: 3px;
+    left: -75px;
+    animation: shine 5s linear infinite;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  &.claim {
+    background: var(--predictionlistwidget-prediction-claim-bg);
+  }
+
+  &.return {
+    background: var(--predictionlistwidget-prediction-return-bg);
+  }
+
+  &.confirming {
+    opacity: 0.8;
+  }
+
+  &:global(.propagating):after {
+    opacity: 0.25;
+  }
+
+  &:global(.propagating) {
+    pointer-events: none;
+  }
+
+  @keyframes shine {
+    20%, 100% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    0% {
+      opacity: 0;
+    }
+    7.5% {
+      opacity: 0.5;
+    }
+    15% {
+      opacity: 0.5;
+    }
+    19.9% {
+      opacity: 0.5;
+    }
+  }
+}
+
+:global(.propagating) {
+  .btn {
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,227 @@
+.betbar {
+  display: flex;
+  align-items: center;
+  border-radius: 100px;
+  border: 1px solid var(--betbar-border);
+  background: var(--betbar-bg);
+  padding: 16px;
+  font-family: 'Proxima Nova', sans-serif;
+  backdrop-filter: blur(9px);
+  box-shadow: 0px 11px 37px rgba(0, 0, 0, .20);
+  transition: opacity 0.3s ease-out;
+  position: relative;
+  user-select: none;
+  animation: fadeIn 0.5s ease-out;
+
+  @keyframes fadeIn {
+    0% {
+      transform: translate(0%, -10%);
+      opacity: 0;
+    }
+    100% {
+      transform: translate(0%, 0%);
+      opacity: 1;
+    }
+  }
+
+  .timing {
+    display: flex;
+    align-items: center;
+
+    .timer {
+      margin-right: 18px;
+
+      .pietimerprogress circle {
+        stroke-width: 3;
+        stroke: var(--betbar-pietimerprogress-border-color);
+      }
+
+      .tillpayoutprogress circle {
+        stroke-width: 3;
+        stroke: var(--betbar-tillpayoutprogress-border-color);
+      }
+
+      .pietimerprogresscircle {
+        border: 2px solid var(--betbar-pietimerlocked-border-color);
+      }
+
+      .tillpayoutcircle {
+        border: 2px solid var(--betbar-pietimerlocked-border-color);
+      }
+
+      .pietimerlocked {
+        padding: 5px;
+        border-radius: 50%;
+        border: 1px solid var(--betbar-pietimerlocked-border-color);
+      }
+
+      .icon > svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    .timelabel {
+      display: flex;
+      flex-direction: column;
+      min-width: 100px;
+
+      .timepositioning {
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 15px;
+        white-space: nowrap;
+        color: var(--betbar-timepositioning-color);
+        margin-bottom: 5px;
+
+        .timepositioningnumber {
+          font-size: 14px;
+          line-height: 16px;
+        }
+      }
+
+      .timeopen {
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 20px;
+        white-space: nowrap;
+        color: var(--betbar-timeopen-color);
+
+        .timeopennumber {
+          font-size: 18px;
+          line-height: 21px;
+        }
+      }
+    }
+  }
+
+  &.disabled {
+    .bet {
+      pointer-events: none;
+      opacity: 0.3;
+    }
+    .wager {
+      pointer-events: none;
+      opacity: 0.3;
+
+      input {
+        user-select: none;
+      }
+    }
+  }
+
+  &.warning {
+    filter: blur(2px);
+  }
+
+  .bet {
+    display: flex;
+    flex: 1;
+    gap: 16px;
+
+    $power2-out: linear(0, 0.2688 9.91%, 0.3859 15%, 0.4917 20.19%, 0.5865 25.5%, 0.6705 30.93%, 0.7441 36.51%, 0.8075 42.26%, 0.8593 47.98%, 0.9022 53.93%, 0.9366 60.13%, 0.963 66.67%, 0.9812 73.4%, 0.9929 80.76%, 0.9986 88.89%, 1);
+
+    .up,
+    .down,
+    .zero {
+      display: flex;
+      height: 56px;
+      padding: 13px;
+      border-radius: 100px;
+      user-select: none;
+      color: var(--betbar-betpercent-color);
+      transition: opacity 0.5s $power2-out;
+
+      svg {
+        width: 16px;
+      }
+
+      &:global(.propagating) {
+        pointer-events: none;
+        opacity: 0.9;
+      }
+
+      &.flickering {
+        animation: flickering 1s $power2-out infinite;
+
+        @keyframes flickering {
+          0% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.5;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+      }
+
+      &.hushed {
+        opacity: 0.5;
+      }
+    }
+  
+    .up {
+      flex: 1;
+      background: var(--betbar-betup-bg);
+    }
+
+    .down {
+      flex: 1;
+      background: var(--betbar-betdown-bg);
+    }
+
+    .zero {
+      width: 56px;
+      background: var(--betbar-betzero-bg);
+      color: var(--website-bg);
+    }
+
+    .icon {
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--betbar-betarrow-bg);
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .percent {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      white-space: nowrap;
+    }
+
+    &~div {
+      margin-left: 32px;
+    }
+
+  }
+
+}
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.payout {
+  align-self: flex-end;
+}
+
+.notifications {
+  position: relative;
+  margin-bottom: 10px;
+  transform: none;
+  left: 0;
+  bottom: 0;
+}

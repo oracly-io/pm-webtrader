@@ -1,0 +1,16 @@
+.master {
+  display: flex;
+  min-height: 100vh;
+  min-width: 100vw;
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+	background-color: var(--website-bg);
+  font-family: 'Gilroy', sans-serif;
+	font-style: normal;
+  font-weight: 500;
+
+  & * {
+    box-sizing: border-box;
+  }
+}

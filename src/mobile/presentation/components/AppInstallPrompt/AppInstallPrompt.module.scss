@@ -1,0 +1,185 @@
+.containerIOS {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 24px 16px;
+  background-color: #152B5D;
+  z-index: 99999999;
+  
+  .appInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  
+    .text {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+
+      .title {
+        font-family: 'Proxima Nova';
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 32px;
+        text-align: center;
+        color: #ffffff;
+      }
+      .subtitle {
+        font-family:' Proxima Nova';
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 14px;
+        text-align: center;
+        color: #B7C1F7;
+      }
+    }
+  }
+  .hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    
+    .hintText {
+      display: flex;
+      align-items: center;
+      font-family: 'Proxima Nova';
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 16px;
+      text-align: center;
+
+      svg {
+        margin: 0 5px;
+      }
+    }
+  }
+}
+
+.bottom {
+  bottom: 0;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border-radius: 16px;
+    border: 1px solid var(--gamelist-close-border-color);
+    transition: background-color .1s linear, border-color .1s linear;
+    height: 40px;
+    width: 40px;
+  
+    &:active {
+      background: var(--gamelist-close-bg-active);
+    }
+  
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
+}
+
+.top {
+  top: 0;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  .hint {
+    .hintIcon {
+      position: absolute;
+      top: 5px;
+      right: 10%;
+    }
+  }
+}
+
+.containerAndroid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  padding: 16px 20px 16px 16px;
+  background-color: #152B5D;
+  z-index: 99999999;
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .text {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      .title {
+        font-family: 'Proxima Nova';
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 18px;
+        text-align: left;
+        color: #FFFFFF;
+      }
+      .subtitle {
+        font-family: 'Proxima Nova';
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 14px;
+        text-align: left;
+        color: #B7C1F7;
+      }
+    }
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  
+    .btn {
+      width: 77px;
+      height: 40px;
+      padding: 12px 20px 11px 20px;
+      background: #1F50F7;
+      border-radius: 10px;
+    }
+
+    .close {
+      border-radius: 16px;
+      border: 1px solid var(--gamelist-close-border-color);
+      transition: background-color .1s linear, border-color .1s linear;
+      height: 40px;
+      width: 40px;
+    
+      &:active {
+        background: var(--gamelist-close-bg-active);
+      }
+    
+      svg {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+}
+
+.delimiter {
+  height: 1px;
+  background-color: #253C71;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.closeButton {
+  border: 1px solid #253C71;
+  width: 100%;
+  border-radius: 32px;
+  margin-top: 32px;
+}

@@ -1,0 +1,25 @@
+.result {
+  display: flex;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    display: block;
+  }
+
+  &.win {
+    background: var(--common-currency-result-win-bg);
+  }
+
+  &.lose {
+    background: var(--common-currency-result-lose-bg);
+  }
+
+  &.draw {
+    background: var(--common-currency-result-draw-bg);
+  }
+}

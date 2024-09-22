@@ -1,0 +1,51 @@
+.webtrader {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+}
+
+.betbar {
+  position: fixed;
+  bottom: 24px;
+  z-index: 1;
+  width: calc(100% - 16px);
+
+  &.offset {
+    margin-left: calc(var(--roundinfo-width)/-2);
+  }
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-self: flex-end;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.widget {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 100vh;
+  left: 0;
+  z-index: 9997;
+  background-color: var(--darkstar);
+  transition: all .3s ease-in-out;
+
+  &.visible {
+    transform: translateY(-100vh);
+  }
+}

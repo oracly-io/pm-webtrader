@@ -1,0 +1,42 @@
+.roundinfo {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  height: 100vh;
+  margin-bottom: 16px;
+  color: var(--roundinfo-title-color);
+  scrollbar-color: var(--predictionlistwidget-scroll-thumb) var(--predictionlistwidget-scroll-track);
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--predictionlistwidget-scroll-thumb);
+    border-radius: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--predictionlistwidget-scroll-track);
+    border-radius: 7px;
+  }
+
+  &:global(.propagating) {
+
+    &:after {
+      display: none;
+    }
+
+    &:global(.phantom) {
+      &:after {
+        display: block;
+        opacity: 0.01;
+        margin-left: -5px;
+      }
+    }
+  }
+}

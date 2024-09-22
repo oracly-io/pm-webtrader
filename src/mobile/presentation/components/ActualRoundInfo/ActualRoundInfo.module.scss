@@ -1,0 +1,186 @@
+.container {
+    position: absolute;
+    top: calc(70px + var(--header-height) + env(safe-area-inset-top));
+    left: 16px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+
+    .prizefunds {
+        height: 15vh;
+        position: relative;
+    }
+
+    .block {
+        border-radius: 100px;
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        padding: 8px 14px 8px 8px;
+        border: 1px solid #ffffff;
+
+        span {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+        }
+    }
+
+    .currency {
+        background-color: #000000;
+        border-radius: 100px;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+            path {
+                fill: #FFD587;
+            }
+        }
+    }
+
+    .prizefund {
+        background-color: #FFD587;
+        color: #151A32;
+    }
+
+    .bettorscount {
+        background-color: #1D4ADD;
+        color: #FFFFFF;
+    }
+
+    .bettorlist {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+        :first-child {
+            animation: fadeInSlideDown 0.5s ease-out;
+        }
+        .bettorContainer {
+            display: flex;
+            align-items: center;
+            
+            .bettor {
+                width: 40px;
+                height: 40px;
+                border: 1px solid #ffffff;
+                z-index: 5;
+            }
+
+            .difference {
+                display: flex;
+                background: #FFD587;
+                padding: 8px 10px 8px 8px;
+                border-radius: 100px;
+                animation: fadeUp 3s cubic-bezier(0, 0, 0.4, 1) 1;
+                animation-delay: 0.5s;
+                transform: translateY(0);
+                opacity: 0;
+                margin-left: 8px;
+
+                .wager {
+                    color: #151A32;
+                    margin-right: 4px;
+                }
+                .currency {
+                    svg {
+                        path {
+                            fill: #FFD587;
+                        }
+                    }
+                }
+                
+
+                @keyframes fadeUp {
+                  0% {
+                    transform: translateY(0);
+                    opacity: 1;
+                  }
+                  100% {
+                    transform: translateY(-80%);
+                    opacity: 0;
+                  }
+                }
+              }
+            
+        }
+        
+
+        .shifted {
+            transition: all 0.5s ease-out;
+            transform: translateY(48px); /* Adjust this value to match the height of your list items + margin */
+        }
+    }
+    .stacked {
+        width: 40px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        .stackedbettor {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ffffff;
+            position: absolute;
+            left: 0;
+        }
+        .first {
+            z-index: 4;
+            top: 0px;
+        }
+
+        .second {
+            z-index: 2;
+            top: 5px;
+        }
+
+        .third {
+            z-index: 1;
+            top: 10px;
+        }
+
+        .stackedshifted {
+            transition: all 0.5s ease-out;
+            transform: translateY(5px);
+        }
+        
+    }
+}
+
+.avatarContainer {
+    position: relative;
+
+    .wagerPosition {
+        position: absolute;
+        border: 1px solid #ffffff;
+        border-radius: 100px;
+        width: 18px;
+        height: 18px;
+        right: -5px;
+        top: -5px;
+        z-index: 5;
+
+        &>svg {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+@keyframes fadeInSlideDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

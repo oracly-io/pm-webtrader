@@ -1,0 +1,53 @@
+.gamelist {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 100%;
+  bottom: 0;
+  display: flex;
+  overflow: hidden;
+  background: transparent;
+  transition: transform .1s ease-out;
+  width: 100%;
+
+  &.opened {
+    transform: translateX(100%);
+  }
+}
+
+.content {
+  position: relative;
+  box-shadow: 0px 0px 30px 10px var(--website-bg);
+  border-radius: 0px 24px 24px 0px;
+  backdrop-filter: blur(15px);
+  display: flex;
+}
+
+.closeOverlay {
+  flex: 1;
+}
+
+.close {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  border: 1px solid var(--gamelist-close-border-color);
+  transition: background-color .1s linear, border-color .1s linear;
+
+  &:hover {
+    border: 1px solid var(--gamelist-close-border-color-hover);
+    background: var(--gamelist-close-bg-hover);
+  }
+
+  &:active {
+    background: var(--gamelist-close-bg-active);
+  }
+
+  svg {
+    width: 13px;
+    height: 13px;
+  }
+}

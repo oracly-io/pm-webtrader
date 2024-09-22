@@ -1,0 +1,71 @@
+.pheader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  margin: 0 16px;
+  cursor: pointer;
+  transition: transform .2s ease-in;
+  user-select: none;
+
+  &:hover .moreinfo svg {
+    transition: transform .2s ease-out;
+    transform: scale(1.1);
+  }
+}
+
+.description {
+  user-select: none;
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.moreinfo {
+  display: flex;
+
+  svg {
+    transition: transform .2s ease-out;
+    transform: scale(1);
+  }
+
+  &.expanded {
+    transition: transform .2s ease-in;
+
+    svg {
+      transform: scale(1.1);
+    }
+  }
+
+}
+
+.value {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+  opacity: 1;
+  transition: opacity .1s ease-in-out, font-size .1s ease-in-out;
+  overflow: hidden;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  span {
+    padding-left: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+}

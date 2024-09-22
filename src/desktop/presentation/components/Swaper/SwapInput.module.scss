@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+}
+
+.input {
+  filter: none;
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 0s;
+  text-align: left;
+  text-overflow: ellipsis;
+  pointer-events: auto;
+  width: 0px;
+  position: relative;
+  outline: none;
+  border: none;
+  flex: 1 1 auto;
+  background-color: transparent;
+  font-size: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0px;
+  appearance: textfield;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+:disabled {
+  opacity: .3;
+}
+
+.disabled {
+  input {
+    opacity: .3;
+  }
+}

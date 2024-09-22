@@ -1,0 +1,234 @@
+.tile {
+  background: var(--gamepinbar-tile-bg);
+  border-radius: 77px;
+  cursor: pointer;
+  display: table-cell;
+  transition: background-color .1s ease-in-out;
+  border: 1px solid var(--gamepinbar-tile-border-color);
+  user-select: none;
+
+  &.selected {
+    background: var(--gamepinbar-tile-bg-selected);
+    border: 1px solid var(--gamepinbar-tile-border-color-selected);
+
+    &.unlocked {
+      .inner::before {
+        background: var(--gamepinbar-tile-bg-anim-selected);
+      }
+    }
+
+    .inner:hover {
+      .unpin {
+        display: none;
+      }
+      .pietimer {
+        display: flex;
+      }
+    }
+
+    .level svg path {
+      fill: var(--gamepinbar-tile-currency-level-fill-selected);
+    }
+  }
+
+  &.unlocked {
+
+    .inner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background: var(--gamepinbar-tile-bg-anim);
+      animation: gradient 4s linear infinite;
+    }
+
+    @keyframes gradient {
+      0% {
+        left: 0;
+        width: 100%;
+      }
+
+      25% {
+        left: 0;
+        width: 200%;
+      }
+
+      50% {
+        left: 0;
+        width: 100%;
+      }
+
+      75% {
+        left: -100%;
+        width: 200%;
+      }
+
+      100% {
+        left: 0%;
+        width: 100%;
+      }
+    }
+  }
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 9px 9px 14px;
+    border-radius: 77px;
+    position: relative;
+    overflow: hidden;
+
+    .left {
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+
+      .flags {
+        align-self: center;
+        display: flex;
+
+        &>svg {
+          width: 32px;
+          height: 32px;
+
+          &~svg {
+            margin-left: -12px;
+            width: 28px;
+            height: 28px;
+          }
+        }
+      }
+
+      .event {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+
+        .prize {
+          width: 0;
+          font-weight: 400;
+          font-family: 'Roboto', sans-serif;
+          font-size: 12px;
+          line-height: 1;
+          white-space: nowrap;
+          color: var(--gamepinbar-tile-prize-color);
+          display: flex;
+
+          .total {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            min-width: 80px;
+          }
+        }
+
+        .name {
+          margin-top: 9px;
+          font-weight: 700;
+          font-size: 15px;
+          line-height: 0.9;
+          white-space: nowrap;
+          color: var(--gamepinbar-tile-name-color);
+        }
+      }
+
+      .profit {
+        width: 0;
+        font-weight: 400;
+        font-family: 'Roboto', sans-serif;
+        font-size: 12px;
+        line-height: 1;
+        justify-content: center;
+        white-space: nowrap;
+        color: var(--gamepinbar-tile-prize-color);
+        display: flex;
+        flex-direction: column;
+        row-gap: 2px;
+        margin-left: 20px;
+        margin-right: 30px;
+
+        .percents {
+          .percent {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            min-width: 70px;
+          }
+
+          svg {
+            margin-right: 3px;
+            width: 9px;
+            height: 9px;
+          }
+        }
+      }
+    }
+
+    .unpin {
+      display: none;
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      margin-left: 48px;
+
+      .pietimer {
+        display: flex;
+        align-items: center;
+
+        .tillpayoutprogress circle {
+          stroke-width: 3;
+          stroke: var(--betbar-tillpayoutprogress-border-color);
+        }
+
+        .timeprogress circle {
+          stroke-width: 3;
+          stroke: var(--gamepinbar-tile-timeprogress-border-color);
+        }
+
+        .locktimer {
+          padding: 4px;
+          border-radius: 50%;
+
+          svg {
+            display: block;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      .unpin {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        background-color: #576397;
+        opacity: 0.8;
+        transition: opacity .1s ease-out;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .pietimer {
+        display: none;
+      }
+    }
+
+  }
+}
+
+.level svg path {
+  fill: var(--gamepinbar-tile-currency-level-fill);
+}

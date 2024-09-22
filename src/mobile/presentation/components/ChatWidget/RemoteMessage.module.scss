@@ -1,0 +1,172 @@
+.message {
+  display: flex;
+  max-width: 100%;
+  padding-bottom: 16px;
+  font-family: 'Proxima Nova', sans-serif;
+
+  &.phantom {
+    display: none;
+  }
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.inner {
+ margin-left: 16px;
+}
+
+.notation {
+  display: flex;
+}
+
+.sender {
+  display: flex;
+  align-items: center;
+  color: var(--chatwidget-remote-message-sender-color);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 0.8;
+  user-select: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.address {
+  text-indent: -9999999px;
+  display: inline-block;
+  height: 0;
+}
+
+.timestamp {
+  display: flex;
+  align-items: center;
+  color: var(--chatwidget-timestamp-color);
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 0.8;
+  white-space: nowrap;
+  margin-left: 5px;
+}
+
+.reply {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  margin-top: 10px;
+  margin-left: 8px;
+  background-color: transparent;
+  cursor: auto;
+  pointer-events: none;
+  border-radius: 50%;
+  transition: background-color .15s linear;
+
+  &.enabled {
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  &:hover {
+    background-color: #172A4C;
+
+    svg path {
+      fill: #BEC7FF;
+    }
+  }
+
+  &:active {
+    background-color: rgba(190, 199, 255, 0.33);
+
+    svg path {
+      fill: #BEC7FF;
+    }
+  }
+
+  svg path {
+    transition: fill .15s linear;
+    fill: #7E97FB;
+  }
+}
+
+.content {
+  margin-top: 10px;
+  display: flex;
+}
+
+.textcontent {
+  overflow: hidden;
+  padding: 16px;
+  background: var(--chatwidget-remote-message-bg);
+  border-radius: 8px 24px 24px 24px;
+}
+
+.text {
+  min-width: 0;
+  color: var(--chatwidget-remote-text-color);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  margin-bottom: -6px;
+  margin-top: -6px;
+
+  > span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.gif {
+  width: 170px;
+  height: 170px;
+  margin: -14px -14px;
+  background-image: url(https://media.tenor.com/QahtlpcnGOMAAAAC/dance-funny-dance.gif);
+  background-size: cover;
+  background-origin: border-box;
+  background-origin: content-box;
+  background-clip: content-box;
+  background-attachment: local;
+  text-indent: -9999999px;
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  border-radius: 8px 24px 24px 24px;
+}
+
+.username {
+  padding: 2px 4px;
+  color: var(--chatwidget-username-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity .1s ease-out;
+  opacity: .9;
+  cursor: pointer;
+
+  &.iam {
+    background-color: #212233;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  span {
+    user-select: none;
+
+    & ~ span {
+      display: inline-block;
+      font-size: 0;
+      line-height: 0;
+      text-indent: -9999999px;
+      user-select: auto;
+    }
+  }
+}

@@ -1,0 +1,69 @@
+.lines {
+  display: flex;
+  margin: 12px 5px;
+  background: var(--round-timelines-bg);
+  justify-content: flex-end;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.positioning {
+  transition: width .3s ease-in-out;
+  background: var(--predictionlistwidget-prediction-positioning-line);
+  border-radius: 7px;
+}
+
+.round {
+  transition: width .3s ease-in-out;
+  margin-left: 1px;
+  background: var(--predictionlistwidget-prediction-round-line);
+  border-radius: 7px;
+}
+
+.inactive {
+  height: 1px;
+}
+
+.active {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+  height: 5px;
+
+	& > span:after {
+		content: "";
+		position: absolute;
+		top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+		background-image: linear-gradient(
+			-45deg,
+			rgba(255, 255, 255, .03) 25%,
+			transparent 25%,
+			transparent 50%,
+			rgba(255, 255, 255, .03) 50%,
+			rgba(255, 255, 255, .03) 75%,
+			transparent 75%,
+			transparent
+		);
+		z-index: 1;
+		background-size: 50px 50px;
+		border-top-right-radius: 8px;
+		border-bottom-right-radius: 8px;
+		border-top-left-radius: 20px;
+		border-bottom-left-radius: 20px;
+		overflow: hidden;
+    animation: moveing 1s linear infinite;
+
+    @keyframes moveing {
+      0% {
+        background-position: 0;
+      }
+      100% {
+        background-position: 50px;
+      }
+    }
+	}
+}
+

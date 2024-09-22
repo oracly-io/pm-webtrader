@@ -1,0 +1,92 @@
+import { isEmpty, keys, pick, filter, pickBy } from 'lodash'
+
+import { get } from '@lib/immutable'
+
+import { getActiveGameId } from '@state/getters/ui'
+import { getRoundById } from '@state/getters/rounds'
+
+function _getPredictions(state) {
+  return get(state, ['predictions', 'collection', 'hash'])
+}
+
+export function getPredictionsByIds(state, predictionids) {
+  return pick(_getPredictions(state), predictionids)
+}
+
+export function getBettorPredictionIds(state, bettorid) {
+  const predictionIds = keys(get(state, ['predictions', 'collection', '_idx_bettor', bettorid]))
+
+  return predictionIds
+}
+
+function getBettorPredictions(state, bettorid) {
+  const predictionids = getBettorPredictionIds(state, bettorid)
+  const predictions = getPredictionsByIds(state, predictionids)
+  return predictions
+}
+
+export function getBettorRoundPredictions(state, roundid, bettorid) {
+  const predictions = getBettorPredictions(state, bettorid)
+  return filter(predictions, { roundid })
+}
+
+// new
+
+export function getPredictions(state) {
+  return get(state, ['predictions', 'collection', 'hash'])
+}
+
+export function getPredictionById(state, id) {
+  return get(getPredictions(state), [id])
+}
+
+export function getPredictionsByGameIdAndBettor(state, gameid, bettor) {
+  // TODO: implemet indexator reducer __idx__
+  // const predictionids = get(state, ['__idx__', 'prediction', 'gameid', gameid, 'bettorid', bettor])
+  // const predictions = pick(_getPredictions(state), predictionids)
+  const predictions = pickBy(_getPredictions(state), { gameid, bettor })
+
+  return predictions
+}
+
+export function getActiveGameBettorPredictions(state, bettor) {
+  const gameid = getActiveGameId(state)
+  if (!gameid) return {}
+
+  const predictions = getPredictionsByGameIdAndBettor(state, gameid, bettor)
+
+  return predictions
+}
+
+export function getRoundTopWinnerPredictionIds(state, roundid) {
+  const round = getRoundById(state, roundid)
+  if (isEmpty(round) || !round.resolved) return []
+  return get(state, ['predictions', 'top', 'winners', roundid, round.resolution])
+}
+
+export function getRoundTopWinnerPredictions(state, roundid) {
+  const predictionids = getRoundTopWinnerPredictionIds(state, roundid)
+  return pick(getPredictions(state), predictionids)
+}
+
+export function getRoundTopBettorPredictionIds(state, roundid) {
+  return get(state, ['predictions', 'top', 'bettors', roundid])
+}
+
+export function getRoundTopBettorPredictions(state, roundid) {
+  const predictionids = getRoundTopBettorPredictionIds(state, roundid)
+  return pick(getPredictions(state), predictionids)
+}
+
+<<<<<<< HEAD
+export function getRoundSize(state, roundid) {
+  return get(state, ['predictions', 'collection', 'size', roundid])
+}
+
+export function getPredictionsMissingRoundIds (state) {
+  return get(state, ['predictions', 'collection', '_missingRounds'])
+=======
+export function getPredictionsMissingRoundIds(state) {
+  return get(state, ['predictions', '_missingRounds'])
+>>>>>>> chat
+}

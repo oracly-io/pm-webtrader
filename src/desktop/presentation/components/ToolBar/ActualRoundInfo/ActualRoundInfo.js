@@ -1,0 +1,93 @@
+import React from 'react'
+import cn from 'clsx'
+import { isEmpty } from 'lodash'
+
+import PrizefundDistributionLines from '@components/common/PrizefundDistributionLines'
+import RoundInfo from '@components/common/RoundInfo'
+import RoundResolution from '@components/common/RoundInfo/RoundResolution'
+import RoundEmpty from '@components/common/RoundInfo/RoundEmpty'
+import RoundMain from '@components/common/RoundInfo/RoundMain'
+import RoundHistory from '@components/common/RoundInfo/RoundHistory'
+import RoundActualPredictions from '@components/common/RoundInfo/RoundActualPredictions'
+import RoundData from '@components/common/RoundInfo/RoundData'
+import RoundGroupTitle from '@components/common/RoundInfo/RoundGroupTitle'
+import LevelTag from '@components/common/LevelTag'
+import RoundAdditionalInfo, { InfoIcon } from '@components/common/RoundInfo/RoundAdditionalInfo'
+import { PriceProvider } from '@components/common/RoundInfo/Price'
+import { useTranslate } from '@lib/i18n-utils'
+import { connect } from '@state'
+import { getActiveGameId, getActualRound } from '@state/getters'
+
+import css from './ActualRoundInfo.module.scss'
+
+const ActualRoundInfo = (props) => {
+
+  const t = useTranslate()
+
+  return (
+    <RoundInfo className={css.roundinfo} round={props.round}>
+      {({ round, settlment, game, resolution, propagating, bettorpredictions }, ref) => (
+        <>
+          <PriceProvider>
+            <RoundGroupTitle
+              className={cn(css.title, css.roundTitle)}
+              title={t('Round')}
+              htmlTitle={round.roundid}
+            >
+              <LevelTag game={game} className={css.level} />
+              <InfoIcon />
+            </RoundGroupTitle>
+            <div>
+              <RoundAdditionalInfo round={round} />
+              <RoundData className={css.rounddata}>
+                <RoundMain
+                  round={round}
+                  game={game}
+                />
+                <PrizefundDistributionLines
+                  className={css.prizefunds}
+                  prizefunds={round.prizefunds}
+                  currency={round.currency}
+                  level={game.level}
+                />
+                <RoundResolution
+                  round={round}
+                  game={game}
+                  settlment={settlment}
+                  unverifiedResolution={resolution}
+                />
+              </RoundData>
+            </div>
+          </PriceProvider>
+          {!isEmpty(bettorpredictions) && (
+            <>
+              <RoundGroupTitle
+                className={css.title}
+                title={t('Predictions')}
+              />
+              <RoundActualPredictions
+                predictions={bettorpredictions}
+                round={round}
+                game={game}
+              />
+            </>
+          )}
+
+          <RoundHistory
+            titleClassName={css.titleClassName}
+            round={round}
+            game={game}
+            customScrollParentRef={ref}
+          />
+
+          <RoundEmpty round={round} propagating={propagating} />
+        </>
+      )}
+
+    </RoundInfo>
+  )
+}
+
+export default connect(
+  (state) => ({ round: getActualRound(state, getActiveGameId(state)) }),
+)(React.memo(ActualRoundInfo))

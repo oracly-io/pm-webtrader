@@ -1,0 +1,65 @@
+import { combine } from '@state/reducer/utils'
+import { reducer } from '@state/async'
+import { toPredictionId } from '@state/mappers'
+
+import {
+  // GET_ROUND,
+  PLACE_PREDICTION,
+  GET_GAMES,
+  WALLET_CONNECT,
+  GET_PRICE_FEED,
+  // GET_ROUNDS_HISTORY,
+  GET_PREDICTIONS_BY_BETTOR_ID,
+  GET_CHAT_CHANNELS,
+  APPROVE_ACCOUNT_ALLOWANCE,
+  WITHDRAW,
+  GET_BALANCE,
+  MINT_DEMO_1000,
+  RESOLVE_WITHDRAW,
+  RESOLVE_WITHDRAW_NOCONTEST,
+  REQUEST_AUTHENTICATION_PSIG,
+
+  READ_BLOCKCHAIN_ROUND_BY_ID,
+  READ_BLOCKCHAIN_LATEST_PREDICTIONS_BY_ADDRESS,
+  READ_BLOCKCHAIN_LATEST_ROUNDS_BY_GAMEID,
+  READ_BLOCKCHAIN_LATEST_PREDICTIONS_BY_ROUNDID,
+} from '@state/actions'
+
+export default combine({
+  [MINT_DEMO_1000]: reducer(MINT_DEMO_1000),
+  [GET_BALANCE]: reducer(GET_BALANCE, ({ account }) => account),
+
+  [GET_PREDICTIONS_BY_BETTOR_ID]: reducer(GET_PREDICTIONS_BY_BETTOR_ID, ({ bettorid }) => bettorid),
+
+  [GET_PRICE_FEED]: reducer(GET_PRICE_FEED, ({ pricefeed }) => pricefeed),
+
+  // [GET_ROUND]: reducer(GET_ROUND, ({ roundid }) => roundid),
+  [GET_GAMES]: reducer(GET_GAMES),
+  [APPROVE_ACCOUNT_ALLOWANCE]: reducer(APPROVE_ACCOUNT_ALLOWANCE, ({ erc20 }) => erc20),
+<<<<<<< HEAD
+  // [GET_ROUNDS_HISTORY]: reducer(GET_ROUNDS_HISTORY, ({ gameid }) => gameid),
+=======
+  [GET_ROUNDS_HISTORY]: reducer(GET_ROUNDS_HISTORY, ({ gameid }) => gameid),
+  [GET_CHAT_CHANNELS]: reducer(GET_CHAT_CHANNELS),
+>>>>>>> staging
+
+  // Wallet Interactions
+  [WITHDRAW]: reducer(WITHDRAW, ({ predictionid }) => predictionid),
+  [RESOLVE_WITHDRAW]: reducer(RESOLVE_WITHDRAW, ({ predictionid }) => predictionid),
+  [RESOLVE_WITHDRAW_NOCONTEST]: reducer(RESOLVE_WITHDRAW_NOCONTEST, ({ predictionid }) => predictionid),
+  [WALLET_CONNECT]: reducer(WALLET_CONNECT),
+
+  [PLACE_PREDICTION]: reducer(PLACE_PREDICTION, (args) => toPredictionId(args)),
+
+  [REQUEST_AUTHENTICATION_PSIG]: reducer(REQUEST_AUTHENTICATION_PSIG, ({ from }) => from),
+
+  // Contract
+  [READ_BLOCKCHAIN_LATEST_PREDICTIONS_BY_ADDRESS]: reducer(READ_BLOCKCHAIN_LATEST_PREDICTIONS_BY_ADDRESS, ({ loadType, address }) =>
+    [[address, loadType].filter(i => i).join('.'), address]
+  ),
+  [READ_BLOCKCHAIN_LATEST_PREDICTIONS_BY_ROUNDID]: reducer(READ_BLOCKCHAIN_LATEST_PREDICTIONS_BY_ROUNDID, ({ loadType, roundid }) =>
+    [[roundid, loadType].filter(i => i).join('.'), roundid]
+  ),
+  [READ_BLOCKCHAIN_ROUND_BY_ID]: reducer(READ_BLOCKCHAIN_ROUND_BY_ID, ({ roundid }) => roundid),
+  [READ_BLOCKCHAIN_LATEST_ROUNDS_BY_GAMEID]: reducer(READ_BLOCKCHAIN_LATEST_ROUNDS_BY_GAMEID, ({ gameid }) => gameid),
+})

@@ -1,0 +1,166 @@
+.container {
+  $border: 1px;
+
+  position: relative;
+  border: $border solid var(--roundinfo-trades-prediction-bg);
+  background: var(--roundinfo-trades-prediction-bg);
+  border-radius: 3px;
+  padding: 22px 24px;
+  margin-left: 8px;
+  margin-right: 8px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -$border;
+    border-radius: inherit;
+  }
+
+  &.claimable {
+    margin-left: -11px;
+    margin-right: -11px;
+    width: calc(100% + 22px);
+    padding-bottom: 16px;
+
+    &:before {
+      background: var(--predictionlistwidget-prediction-border-claimable);
+    }
+  }
+
+  &.win {
+    border-color: var(--resolvedpredictionwidget-prediction-win-bg);
+    background: var(--resolvedpredictionwidget-prediction-win-bg);
+
+    &.claimable {
+      background: var(--predictionlistwidget-prediction-won-claimable-bg);
+      border-color: transparent;
+    }
+
+    .payout {
+      background: var(--predictionlistwidget-prediction-payout-won-claimable-bg);
+
+      svg path {
+        fill: var(--predictionlistwidget-prediction-payout-won-claimable-bg);
+      }
+    }
+  }
+
+  &.nocontest {
+
+    &.claimable {
+      background: var(--predictionlistwidget-prediction-nocontest-claimable-bg);
+      border-color: transparent;
+    }
+  }
+
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+}
+
+.wager {
+  display: flex;
+  align-items: center;
+
+  .value {
+    margin: 0 8px 0 12px;
+  }
+}
+
+.position {
+  display: flex;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.payout {
+  display: flex;
+  align-items: center;
+  position: relative;
+  column-gap: 8px;
+  border-radius: 16px;
+  height: 36px;
+  padding: 0 8px 0 12px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.percentage {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 1px;
+  top: 6px;
+  font-size: 12px;
+  line-height: 22px;
+  height: 22px;
+  border-radius: 16px;
+  background: var(--roundinfo-trades-prediction-percentage-bg);
+  color: var(--roundinfo-trades-prediction-percentage-color);
+  padding: 0 7px;
+  transform: translateY(-100%);
+}
+
+.stateIcon {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 1px);
+  z-index: -1;
+
+  svg {
+    display: flex;
+  }
+}
+
+// styles to make grouped predictions
+.container {
+  border-radius: 16px;
+
+  &:not(:first-child) {
+    margin-top: 8px;
+  }
+
+  &.claimable {
+    border-radius: 24px;
+
+    &:has(+ .claimable) {
+      border-bottom-right-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    &+ .claimable {
+      border-top-right-radius: 3px;
+      border-top-left-radius: 3px;
+      margin-top: 3px;
+    }
+  }
+
+  &:not(.claimable) {
+    border-radius: 16px;
+
+    &:has(+ :not(.claimable)) {
+      border-bottom-right-radius: 3px;
+      border-bottom-left-radius: 3px;
+    }
+
+    &+ :not(.claimable) {
+      border-top-right-radius: 3px;
+      border-top-left-radius: 3px;
+      margin-top: 3px;
+    }
+  }
+
+}

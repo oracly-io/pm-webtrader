@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  align-items: center;
+  min-width: 720px;
+  padding: 16px;
+  border-radius: 24px;
+  color: var(--notification-color);
+  pointer-events: all;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,.3);
+  
+  &.error {
+    background: var(--notification-error-bg);
+  }
+
+  &.show {
+    animation: fadeIn .2s ease-in forwards;
+  }
+
+  &.hide {
+    animation: fadeOut .2s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--notification-icon-error-bg);
+  border-radius: 50%;
+}
+
+.message {
+  font-family: 'Proxima Nova', sans-serif;
+  margin-left: 16px;
+}
+
+.close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background-color .15s ease;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--notification-close-bg-error-hover);
+  }
+
+  &:active {
+    background: var(--notification-close-bg-error-active);
+  }
+}

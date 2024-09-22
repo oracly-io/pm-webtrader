@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 28px;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0;
+  padding: 0;
+  list-style: none;
+  gap: 8px;
+
+  &.level {
+    .option.selected {
+      color: var(--gamelist-levelpicker-option-color-selected);
+
+      &.bronze {
+        background: var(--gamelist-levelpicker-option-bronze-bg-selected);
+      }
+
+      &.silver {
+        background: var(--gamelist-levelpicker-option-silver-bg-selected);
+      }
+
+      &.gold {
+        background: var(--gamelist-levelpicker-option-gold-bg-selected);
+      }
+    }
+  }
+
+  &.duration {
+    .option {
+      &.selected {
+        background: var(--gamelist-schedulepicker-option-bg-selected);
+      }
+    }
+  }
+}
+
+.option {
+  text-align: center;
+  font-family: 'Proxima Nova', sans-serif;
+  line-height: 48px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--gamelist-option-bg);
+  transition: background-color .2s linear;
+  padding: 8px 16px;
+  height: 40px;
+  border-radius: 32px;
+  border: 1px solid #FFFFFF1A;
+  width: auto;
+
+  &:active {
+    background: var(--gamelist-option-bg-active);
+  }
+}
+
+.dropdownHeader {
+  background-color: transparent;
+  justify-content: space-between;
+  border: 1px solid #FFFFFF1A;
+}
+
+.dropdownBody {
+  z-index: 5;
+  border-radius: 14px;
+  background-color: #0f1f43;
+}
+
+.scheduleOption {
+  justify-content: space-between;
+  background-color: transparent;
+
+  &.selected {
+    background-color: #1e3779;
+  }
+}

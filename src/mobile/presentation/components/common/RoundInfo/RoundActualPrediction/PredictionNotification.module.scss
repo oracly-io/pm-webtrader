@@ -1,0 +1,43 @@
+.notification {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 16px;
+  margin: 8px;
+  margin-top: -2px;
+  animation: fadeIn .2s ease-in forwards;
+
+  &.error {
+    background: var(--notification-error-bg);
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+
+    svg {
+      width: 18px;
+      height: 21px;
+    }
+  }
+
+  .message {
+    font-family: 'Proxima Nova', sans-serif;
+    font-size: 13px;
+    margin-left: 8px;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+}

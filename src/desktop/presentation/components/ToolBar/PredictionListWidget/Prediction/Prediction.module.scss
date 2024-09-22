@@ -1,0 +1,445 @@
+.prediction {
+  $border: 1px;
+
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 23px 24px 17px 24px;
+  cursor: pointer;
+  user-select: none;
+  border: $border solid;
+  border-color: var(--predictionlistwidget-prediction-bg);
+  background: var(--predictionlistwidget-prediction-bg);
+  margin-left: 8px;
+  margin-right: 8px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    margin: -$border;
+    border-radius: inherit;
+    background: transparent;
+  }
+
+  &:not(.historical) {
+    background: transparent;
+    border-color: var(--predictionlistwidget-prediction-border-actual);
+    padding-bottom: 8px;
+
+    .bottom {
+      background: var(--predictionlistwidget-prediction-actual-bg);
+      margin-left: -16px;
+      margin-right: -16px;
+      margin-top: 24px;
+      width: calc(100% + 32px);
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .divider {
+      display: none;
+    }
+
+    .btn {
+      margin: 0;
+      margin-top: 24px;
+      width: 100%;
+    }
+
+    &.claimable {
+      padding-bottom: 8px;
+      background: transparent;
+
+      &:before {
+        background: transparent;
+      }
+
+      &.nocontest {
+        background: transparent;
+        &:before {
+          background: transparent;
+        }
+      }
+
+      .bottom {
+        padding-bottom: 16px;
+      }
+    }
+  }
+
+  &.claimable {
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 15px;
+
+    &:before {
+      background: var(--predictionlistwidget-prediction-border-claimable);
+    }
+
+    .bottom {
+      margin-top: 24px;
+    }
+  }
+
+  &.won {
+    border-color: var(--predictionlistwidget-prediction-won-bg);
+    background: var(--predictionlistwidget-prediction-won-bg);
+
+    .payout {
+      background: var(--predictionlistwidget-prediction-payout-won-bg);
+      svg path {
+        fill: var(--predictionlistwidget-prediction-payout-won-bg);
+      }
+    }
+
+    .divider {
+      background-color: var(--predictionlistwidget-prediction-divider-won-bg);
+    }
+
+    &.claimable {
+      background: var(--predictionlistwidget-prediction-won-claimable-bg);
+      border-color: transparent;
+
+      .payout {
+        background: var(--predictionlistwidget-prediction-payout-won-claimable-bg);
+
+        svg path {
+          fill: var(--predictionlistwidget-prediction-payout-won-claimable-bg);
+        }
+      }
+
+      .divider {
+        background-color: var(--predictionlistwidget-prediction-divider-bg);
+      }
+    }
+
+    &:not(.claimable) {
+      padding-bottom: 19px;
+
+      .bottom {
+        margin-top: 20px;
+      }
+    }
+  }
+
+  &.phantom {
+    opacity: .7
+  }
+
+  &.winning {
+    .bottom {
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--predictionlistwidget-prediction-actual-bg-anim);
+        background-size: 200% 200%;
+        animation: winningshine 5s ease infinite;
+      }
+
+      @keyframes winningshine {
+        0% {
+          background-position-x: 0%;
+        }
+        50% {
+          background-position-x: 100%;
+        }
+        100% {
+          background-position-x: 0%;
+        }
+      }
+    }
+
+    .payout {
+      background: var(--predictionlistwidget-prediction-payout-winning-bg);
+    }
+  }
+
+  &.nocontest {
+
+    &.claimable {
+      background: var(--predictionlistwidget-prediction-nocontest-claimable-bg);
+      border-color: transparent;
+    }
+  }
+
+  &.orphan {
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 0, 0, .1) 0%,
+      rgba(255, 0, 0, .1) 100%,
+    );
+    padding-left: 25px;
+    padding-right: 25px;
+    border: none;
+    opacity: 0.8;
+    animation: puls .2s ease-in-out 3;
+    pointer-events: none;
+
+    @keyframes puls {
+      0% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 0.9;
+      }
+      100% {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: color .1s linear;
+
+  &:hover {
+    color: var(--roundinfo-transaction-icon-color-hover);
+  }
+}
+
+.icon {
+  display: flex;
+
+  &:hover {
+    svg path {
+      fill: var(--roundinfo-transaction-icon-color-hover);
+    }
+  }
+
+  svg path {
+    transition: fill .1s linear;
+    fill: var(--roundinfo-transaction-icon-color);
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event {
+  display: flex;
+  align-items: center;
+}
+
+.flags {
+  display: flex;
+  align-self: center;
+  margin-right: 12px;
+
+  &>svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 34px;
+}
+
+.schedule {
+  color: var(--predictionlistwidget-prediction-schedule-color);
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 0.8;
+}
+
+.name {
+  color: var(--predictionlistwidget-prediction-name-color);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 0.8;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  color: var(--predictionlistwidget-prediction-time-color);
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  column-gap: 15px;
+}
+
+.bottom {
+  border-radius: 16px;
+  margin-top: 18px;
+  position: relative;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+}
+
+.payout {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 8px 8px 12px;
+  color: var(--predictionlistwidget-prediction-prize-color);
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  column-gap: 8px;
+  border-radius: 32px;
+  transition: opacity .1s ease-in-out;
+
+  &.payment {
+    opacity: 1;
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+.percentage {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  height: 22px;
+  padding: 0 7px;
+  background: var(--predictionlistwidget-prediction-prize-percentage-bg);
+  color: var(--predictionlistwidget-prediction-prize-percentage-color);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 22px;
+  border-radius: 16px;
+  transform: translateY(-100%);
+}
+
+.wager {
+  display: flex;
+  align-items: center;
+}
+
+.position {
+  display: flex;
+
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+.value {
+  margin-right: 8px;
+  margin-left: 12px;
+  color: var(--predictionlistwidget-prediction-wager-color);
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 18px;
+}
+
+.currency {
+  width: 16px;
+  height: 16px;
+
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+.pietimer {
+  display: flex;
+  align-items: center;
+}
+
+.tillpayoutprogress circle {
+  stroke-width: 3;
+  stroke: var(--betbar-tillpayoutprogress-border-color);
+}
+
+.timeprogress circle {
+  stroke-width: 3;
+  stroke: var(--gamepinbar-tile-timeprogress-border-color);
+}
+
+.divider {
+  height: 1px;
+  margin: 24px -16px;
+  margin-bottom: 0;
+  background-color: var(--predictionlistwidget-prediction-divider-bg);
+}
+
+.stateIcon {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 1px);
+  z-index: -1;
+
+  svg {
+    display: flex;
+  }
+}
+
+
+// styles to make grouped predictions
+.container {
+
+  &:not(:first-child) {
+    .prediction {
+      margin-top: 8px;
+    }
+  }
+
+  .prediction {
+    border-radius: 16px;
+
+    &.claimable.historical {
+      border-radius: 24px;
+    }
+
+    &:not(.claimable).historical {
+      border-radius: 16px;
+    }
+
+    &:not(.historical) {
+      border-radius: 24px;
+    }
+  }
+
+  &:has(+ .container .prediction.claimable.historical) .prediction.claimable.historical,
+  &:has(+ .container .prediction:not(.claimable).historical) .prediction:not(.claimable).historical,
+  &:has(+ .container .prediction:not(.historical)) .prediction:not(.historical) {
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
+  &:has(.prediction.claimable.historical) + .container .prediction.claimable.historical,
+  &:has(.prediction:not(.claimable).historical) + .container .prediction:not(.claimable).historical,
+  &:has(.prediction:not(.historical)) + .container .prediction:not(.historical) {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    margin-top: 3px;
+  }
+}

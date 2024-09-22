@@ -1,0 +1,110 @@
+.webtrader {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+
+  margin-top: var(--webtrader-margin-top);
+  margin-left: var(--webtrader-margin-left);
+  margin-right: var(--webtrader-margin-right);
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: var(--toolbar-top);
+  width: var(--toolbar-width);
+  border-left: 1px solid var(--toolbar-border-color);
+
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 8px;
+    width: 100%;
+  }
+
+  .divider {
+    height: 1px;
+    width: 100%;
+    background-color: #131E31;
+  }
+}
+
+.betbar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+
+  &:hover {
+    z-index: 100;
+  }
+
+  &.offset {
+    margin-left: calc(var(--roundinfo-width)/-2);
+  }
+}
+
+.body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.roundinfo {
+  width: var(--roundinfo-width);
+  height: var(--roundinfo-height);
+  border-left: 1px solid var(--roundinfo-border-color);
+  position: relative;
+}
+
+@media (min-width: 1920px) {
+  .roundinfo {
+    width: var(--roundinfo-lg-width);
+  }
+}
+
+.predictionlistwidget {
+  width: var(--predictionlistwidget-width);
+  height: var(--predictionlistwidget-height);
+  border-left: 1px solid var(--predictionlistwidget-border-color);
+}
+
+@media (min-width: 1920px) {
+  .predictionlistwidget {
+    width: var(--predictionlistwidget-lg-width);
+  }
+}
+
+.chatwidget {
+  width: var(--chatwidget-width);
+  height: var(--chatwidget-height);
+  border-left: 1px solid var(--chatwidget-border-color);
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+
+@media (min-width: 1920px) {
+  .chatwidget {
+    width: var(--chatwidget-lg-width);
+  }
+}
